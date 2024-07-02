@@ -1,0 +1,74 @@
+<div class="dialog-container">
+  <h2>Editar Veterinario</h2>
+  <div class="title-underline"></div>
+  <form [formGroup]="veterinarioForm" (ngSubmit)="guardar()">
+    <div class="row">
+      <div class="col-md-4 d-flex align-items-center justify-content-center flex-column">
+        <label for="fotoVeterinario" class="form-label foto-label">Editar Foto</label>
+        <div class="foto-container">
+          <img [src]="fotoVeterinarioURL" class="img-fluid perfil-foto" alt="Foto del veterinario">
+        </div>
+        <input id="fotoVeterinario" type="file" (change)="onFileSelected($event, 'fotoVeterinario')" class="form-control-file">
+        <label for="fotoVeterinario" class="btn btn-upload">Subir Foto</label>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="Nombre">Nombre</label>
+          <input id="Nombre" type="text" class="form-control" formControlName="Nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="ApellidoPaterno">Apellido Paterno</label>
+          <input id="ApellidoPaterno" type="text" class="form-control" formControlName="ApellidoPaterno" required>
+        </div>
+        <div class="form-group">
+          <label for="Telefono">Teléfono</label>
+          <input id="Telefono" type="text" class="form-control" formControlName="Telefono">
+        </div>
+        <div class="form-group">
+          <label for="Especialidad">Especialidad</label>
+          <input id="Especialidad" type="text" class="form-control" formControlName="Especialidad" required>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="ApellidoMaterno">Apellido Materno</label>
+          <input id="ApellidoMaterno" type="text" class="form-control" formControlName="ApellidoMaterno" required>
+        </div>
+        <div class="form-group">
+          <label for="CorreoElectronico">Correo Electrónico</label>
+          <input id="CorreoElectronico" type="email" class="form-control" formControlName="CorreoElectronico" required>
+        </div>
+        <div class="form-group">
+          <label for="DNI">DNI</label>
+          <input id="DNI" type="text" class="form-control" formControlName="DNI" required>
+        </div>
+        <div class="form-group">
+          <label for="rol">Rol</label>
+          <select id="rol" formControlName="Rol" class="form-control">
+            <option value="1">General</option>
+            <option value="2">Administrador</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-12 d-flex justify-content-between">
+        <div class="form-group">
+          <label>Foto DNI</label>
+          <div class="input-group">
+            <input id="fotoDNI" type="file" (change)="onFileSelected($event, 'fotoDNI')">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Curriculum Vitae</label>
+          <div class="input-group">
+            <input id="curriculumVitae" type="file" (change)="onFileSelected($event, 'curriculumVitae')">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button type="submit" class="btn btn-primary">Actualizar</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>

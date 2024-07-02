@@ -1,0 +1,18 @@
+.pagination-container .pagination .page-link {
+    color: #2ecc71;
+  }
+  
+  .pagination-container .pagination .page-link:hover {
+    color: #27ae60; /* Un color más oscuro para el hover */
+  }
+  
+  .pagination-container .pagination .page-item.active .page-link {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+    color: white; /* Para el texto en el botón activo */
+  }
+  
+  .pagination-container .pagination .page-item.disabled .page-link {
+    color: #95a5a6; /* Color para los botones deshabilitados */
+  }
+  

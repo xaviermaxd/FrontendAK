@@ -1,0 +1,51 @@
+<!-- src/app/components/perfil/perfil.component.html -->
+
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-md-2 col-lg-2 menu-column">
+        <app-menu></app-menu> <!-- Selector del componente de menú -->
+    </div>
+    <div class="col-md-10 col-lg-10 content-column">
+        <div class="table-container">
+            <div class="content">
+                <section class="seccion-perfil-usuario">
+                    <div class="perfil-usuario-header">
+                        <div class="perfil-usuario-portada">
+                            <div class="perfil-usuario-avatar">
+                                <img src="assets/login/perfil.jpg" class="gallary-img">
+                                <button type="button" class="boton-avatar">
+                                    <i class="far fa-image"></i>
+                                </button>
+                            </div>
+                            <button type="button" class="boton-portada">
+                                <i class="far fa-image"></i> Cambiar fondo
+                            </button>
+                        </div>
+                    </div>
+                    <div class="perfil-usuario-body">
+
+                        <div *ngIf="veterinario; else loading" class="perfil-usuario-footer">
+                            <ul class="lista-datos">
+                                <li><i class="icono fa-solid fa-user"></i>{{ veterinario.Nombre }}</li>
+                                <li><i class="icono fa-solid fa-key"></i>{{ veterinario.VeterinarioID }}</li>
+                                <li><i class="icono fa-regular fa-user"></i>{{ veterinario.Usuario }}</li>
+                                <li><i class="icono fa-solid fa-envelope"></i>{{ veterinario.CorreoElectronico }}</li>
+                            </ul>
+                            <ul class="lista-datos">
+                                <li><i class="icono fas fa-phone-alt"></i>{{ veterinario.Telefono }}</li>
+                                <li><i class="icono fa-solid fa-paw"></i>{{ veterinario.Especialidad }}</li>
+                                <button class="btn " (click)="openChangePasswordDialog()">Actualizar Contraseña</button>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </section>
+             </div>
+        </div>
+    </div>
+    </div>
+   <ng-template #loading>
+    <p>Cargando datos...</p>
+   </ng-template>
+
+</div>

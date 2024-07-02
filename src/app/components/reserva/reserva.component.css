@@ -1,0 +1,342 @@
+/* Estilos generales para la tabla */
+.table-hover {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-hover thead tr {
+  background-color: #04a1bd;
+  color: white;
+  vertical-align: middle;
+}
+
+.table-hover thead th {
+  text-align: center;
+}
+
+.table-hover td,
+.table-hover th {
+  padding: 15px;
+}
+
+.table-hover tbody tr {
+  border-bottom: 1px solid #dad6d6;
+  vertical-align: middle;
+}
+
+.table-hover tbody td {
+  text-align: center;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #e2f5fd;
+}
+
+.table-hover button.btn {
+  margin-right: 5px;
+}
+
+.fa-eye {
+  color: #2ecc71;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  margin-bottom: 0;
+  padding: 8px;
+  box-shadow: 0 1px 15px -1px rgba(0, 0, 0, 0.37);
+}
+
+.filters-card {
+  padding: 20px;
+}
+
+.filters-header {
+  background-color: #04a1bd;
+  color: white;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  border-radius: 5px 5px 0 0;
+}
+
+.reserva-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.turnos-title {
+  font-size: 2rem;
+  color: black;
+}
+
+.filters-body .input-group {
+  margin-bottom: 15px;
+}
+
+.filters-body .input-group .form-control {
+  flex: 1;
+}
+
+.table-card {
+  padding: 20px;
+}
+
+.content {
+  padding: 10px;
+}
+
+.content-container {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.btn-small {
+  padding: 5px 10px;
+  font-size: 1rem;
+}
+
+.btn-large {
+  padding: 10px 20px;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.custom-input-group .btn {
+  flex: none;
+  margin-left: 10px;
+}
+
+.filters-body .row {
+  margin-bottom: 10px;
+}
+
+.filters-body .row:first-of-type {
+  margin-top: 10px;
+}
+
+.filters-body .row + .row {
+  margin-top: 10px;
+}
+
+.filters-body .row .col-md-3,
+.filters-body .row .col-md-4,
+.filters-body .row .col-md-12 {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.filters-body .row .col-md-3:last-child,
+.filters-body .row .col-md-4:last-child,
+.filters-body .row .col-md-12:last-child {
+  padding-right: 10px;
+}
+
+.filters-body .row .btn {
+  width: 100%;
+  height: 100%;
+}
+
+.filters-body .form-control,
+.filters-body .btn {
+  height: 45px;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.textarea-large {
+  flex: 1;
+  resize: none;
+  min-height: 125px;
+  height: 100%;
+}
+
+.btn-primary,
+.table-hover thead tr {
+  background-color: #04a1bd;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Ajustar margen a la columna del menú */
+.menu-column {
+  padding-right: 0;
+  width: 250px; /* Ancho del menú */
+  
+}
+
+
+.content-column {
+  padding-left: 0; /* Eliminar cualquier relleno en el lado izquierdo */
+}
+
+/* Ajustar el ancho del contenido para ocupar el espacio restante */
+@media (min-width: 992px) {
+  .content-column {
+    width: calc(100% - 250px); /* Restar el ancho del menú al 100% */
+  }
+}
+
+body {
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::before::-webkit-scrollbar {
+  display: none;
+}
+
+.container-fluid {
+  height: 100vh;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background: #e2f1fd;
+}
+
+.container-fluid::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilos para la cuadrícula del calendario */
+.calendar-container {
+  display: flex;
+}
+
+.hours-column {
+  width: 60px;
+}
+
+.hour-cell {
+  width: 60px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #f0f8ff;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+.grid-header {
+  background-color: #04a1bd;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
+  position: relative;
+}
+
+.day-column {
+  border: 1px solid #ccc;
+  position: relative;
+}
+
+/* Añadir líneas punteadas cada 40px */
+.day-column::before {
+  content: "";
+  position: absolute;
+  top: 40px; /* Espacio para la cabecera */
+  left: 0;
+  right: 0;
+  height: calc(100% - 40px); /* Resto del espacio para la cuadrícula */
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 39px,
+    rgba(128, 128, 128, 0.3) 40px
+  );
+}
+
+.turno {
+  position: absolute;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #6c757d; /* Color de borde más oscuro */
+  border-radius: 5px; /* Esquinas redondeadas */
+  box-sizing: border-box;
+  background-color: white; /* Fondo blanco para los turnos */
+}
+
+.turno:hover {
+  background-color: #d0e8f2;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.turno.selected {
+  background-color: #3399ff;
+  color: white;
+}
+
+.turno.disabled {
+  background-color: #d3d3d3;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.turno-hora {
+  font-size: 0.9rem;
+  margin: 0;
+  text-align: center; /* Centrar el texto horizontalmente */
+  line-height: 1.5; /* Ajustar el espaciado entre líneas */
+  font-weight: bold; /* Hacer el texto en negrita */
+  padding: 5px; /* Añadir relleno alrededor del texto */
+}
+
+@media screen and (max-width: 768px) {
+  .menu-column {
+      width: 80px; /* Ancho reducido del menú */
+  }
+
+  .content-column {
+      margin-left: 80px; /* Ancho del menú reducido */
+      margin-right: 0; /* Elimina el espacio adicional a la derecha del contenido */
+      width: calc(100% - 80px); /* Ajusta el ancho del contenido */
+  }
+}
+.turnos-title{
+  font-size: 33px; /* Tamaño de fuente del título */
+ /* Negrita para el título */
+  color: #02a9c6; /* Color del texto */
+  margin: 0; /* Elimina márgenes predeterminados */
+}

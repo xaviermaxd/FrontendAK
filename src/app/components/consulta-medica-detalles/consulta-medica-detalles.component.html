@@ -1,0 +1,177 @@
+<!-- consulta-medica-detalles.component.html -->
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 col-lg-2 menu-column">
+        <app-menu></app-menu>
+      </div>
+      <div class="col-md-10 col-lg-10 content-column">
+        <div class="row">
+          <div class="col-12">
+            <section class="seccion-perfil-usuario"> 
+              <div class="perfil-usuario-body">
+                <h3>Mascota {{ consultaMedica.Mascota?.Nombre }}</h3>
+                <h5>Veterinario {{ consultaMedica.Veterinario?.Nombre }} {{ consultaMedica.Veterinario?.ApellidoPaterno }} {{ consultaMedica.Veterinario?.ApellidoMaterno }}</h5>
+                <hr class="line"> 
+                <div class="table-rep-plugin">
+                  <div *ngIf="consultaMedica" class="table-responsive" data-pattern="priority-columns">
+                    <table class="table-bordered table table-sm">
+                      <tbody>
+                        <tr>
+                          <th colspan="4" scope="row" class="title">Fecha y Hora de atención</th>
+                        </tr>
+                        <tr>
+                          <th colspan="3" scope="row">Fecha inicio</th>
+                          <td>{{ consultaMedica.fecha_consulta | date: 'fullDate' }}</td>
+                        </tr>
+                        <tr>
+                          <th colspan="3" scope="row">Hora inicio</th>
+                          <td>{{ consultaMedica.fecha_consulta | date: 'shortTime' }}</td>
+                        </tr>
+                        <tr>
+                          <th colspan="4" scope="row" class="title">Datos Anamnésicos</th>
+                        </tr>
+                        <tr>
+                          <th colspan="1" scope="row">Motivo Consulta</th>
+                          <td colspan="1">
+                            <ul>
+                              <li *ngFor="let motivo of motivosConsulta">{{ motivo.descripcion }}</li>
+                            </ul>
+                          </td>
+                          <th colspan="1" scope="row">Curso</th>
+                          <td colspan="1"> {{ consultaMedica.curso }} {{ consultaMedica.tiempo }}</td>
+                        </tr>
+                        <tr>
+                          <th colspan="1" scope="row">Descripción del Propietario</th>
+                          <td colspan="3">{{ consultaMedica.descripcion_propietario }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Estado Mental</th>
+                          <td> {{ consultaMedica.StatusMental?.nombre }}</td>
+                          <th scope="row">Condición Corporal</th>
+                          <td> {{ consultaMedica.CondicionCorporal?.nombre }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Comportamiento</th>
+                          <td>{{ consultaMedica.Comportamiento?.nombre }}</td>
+                          <th scope="row">Estado General</th>
+                          <td> {{ consultaMedica.EstadoGeneral?.nombre }}</td>
+                        </tr>
+                        <tr>
+                          <th colspan="4" scope="row" class="title">Signos Vitales</th>
+                        </tr>
+                        <tr>
+                          <th scope="row">Peso (Kg)</th>
+                          <td>{{ consultaMedica.peso }}</td>
+                          <th scope="row">Temperatura (°C)</th>
+                          <td>{{ consultaMedica.temperatura }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Estado Hidratación</th>
+                          <td>{{ consultaMedica.EstadoHidratacion?.nombre }}</td>
+                          <th scope="row">Porcentaje Deshidratación</th>
+                          <td>10 %</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Mucosas</th>
+                          <td>{{ consultaMedica.Mucosas?.nombre }}</td>
+                          <th scope="row">Pulso</th>
+                          <td>{{ consultaMedica.Pulso?.nombre }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Frecuencia Cardiaca (ppm)</th>
+                          <td> {{ consultaMedica.frecuencia_cardiaca }}</td>
+                          <th scope="row">Patrón FC</th>
+                          <td>{{ consultaMedica.PatronFC?.nombre }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Frecuencia Respiratoria (rpm)</th>
+                          <td>{{ consultaMedica.frecuencia_respiratoria }}</td>
+                          <th scope="row">Patrón FR</th>
+                          <td>{{ consultaMedica.PatronFR?.nombre }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Glucemia (mg/dl)</th>
+                          <td>{{ consultaMedica.glucemia }}</td>
+                          <th scope="row">PAS</th>
+                          <td>{{ consultaMedica.pas }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">PAD</th>
+                          <td>{{ consultaMedica.pad }}</td>
+                          <th scope="row">PAM</th>
+                          <td>{{ consultaMedica.pam }}</td>
+                        </tr>
+                        <tr>
+                          <th colspan="2" scope="row">Tiempo de Llenado Capilar (T.LL.C) (s)</th>
+                          <td colspan="2">{{ consultaMedica.TiempoLlenadoCapilar?.nombre }}</td>
+                        </tr>
+                        <tr>
+                          <th colspan="4" scope="row" class="title">Listado de Problemas</th>
+                        </tr>
+                        <tr>
+                          <th >Hallazgo físico</th>
+                          <th colspan="2">Observación</th>
+                          <th>Sistema</th>
+                        </tr>
+                        <tr *ngFor="let problema of listaProblemas">
+                          <td>{{ problema.hallazgo_fisico }}</td>
+                          <td colspan="2">{{ problema.observacion }}</td>
+                          <td>{{ problema.Sistema?.nombre }}</td>
+                        </tr>
+                        <tr>
+                          <th colspan="4" scope="row" class="title">Diagnosis durante Consultas</th>
+                        </tr>
+                        <tr>
+                          <th colspan="1" scope="row">Necesita Exámenes</th>
+                          <td>{{ consultaMedica.necesita_examenes ? 'Sí' : 'No' }}</td>
+                          <th colspan="1" scope="row">Tratamiento Realizado</th>
+                          <td>{{ consultaMedica.realizo_tratamientos ? 'Sí' : 'No' }}</td>
+                        </tr>
+                        <tr>
+                          <th colspan="1" scope="row">Descripción del Tratamiento</th>
+                          <td colspan="3">{{ consultaMedica.descripcion_tratamiento }}</td>
+                        </tr>
+                        <tr>
+                          <th colspan="1" scope="row">Observaciones</th>
+                          <td colspan="3">{{ consultaMedica.observaciones_adicionales }}</td>
+                        </tr>
+                        <tr>
+                          <th colspan="4" scope="row" class="title">Exámenes Complementarios</th>
+                        </tr>
+                        <tr>
+                          <th>Examen</th>
+                          <th>Observación</th>
+                          <th>Acciones</th>
+                          <th>Informe</th>
+                          
+                        </tr>
+                        <tr *ngFor="let examen of examenesConsultas">
+                            <td>{{ examen.ExamenesMedico?.nombre }}</td>
+                            <td>{{ examen.observacion }}</td>
+                            <td>
+                              <label class="upload-button">
+                                Subir Archivo
+                                <input type="file" (change)="onFileSelected($event, examen.id)">
+                              </label>
+                            </td>
+                            <td>
+                              <ng-container *ngIf="examen.informe; else noInforme">
+                                <a (click)="verInforme(examen.informe)" class="informe-link">Ver Informe</a>
+                              </ng-container>
+                              <ng-template #noInforme>
+                                Falta resultado del examen
+                              </ng-template>
+                            </td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

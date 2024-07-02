@@ -1,0 +1,139 @@
+.dialog-container {
+  padding: 20px; /* Agrega padding interno */
+  max-height: 80vh; /* Establece la altura máxima en el 80% del tamaño de la ventana */
+  overflow-y: auto; /* Habilita el desplazamiento vertical cuando el contenido excede la altura máxima */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.dialog-container::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+h2 {
+  text-align: center; /* Centra el texto del título */
+  color: #04abd5; /* Color para el título */
+}
+
+.title-underline {
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+  height: 4px;
+  background-color: #04abd5; /* Mismo color que el título */
+  margin: 10px 0 20px 0; /* Centrado con margen superior e inferior */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Margen inferior para cada grupo de formulario */
+}
+
+.form-group label,
+.foto-label {
+  font-weight: bold; /* Negrita para los labels */
+  color: #333; /* Color de los labels */
+  display: block; /* Asegura que los labels ocupen todo el ancho disponible */
+  margin-bottom: 5px; /* Margen inferior para separar del input */
+}
+
+.foto-label {
+  margin-bottom: 20px; /* Ajusta el margen inferior para separar del input */
+  font-size: 1.2rem; /* Aumenta el tamaño de la fuente */
+}
+
+.form-control {
+  margin-bottom: 10px; /* Margen inferior para cada control de formulario */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 1px solid #ced4da; /* Color del borde */
+  padding: 10px; /* Padding interno */
+  font-size: 1rem; /* Tamaño de fuente */
+}
+
+.form-control-file {
+  display: none; /* Oculta el input de archivo real */
+}
+
+.foto-container {
+  margin-bottom: 10px;
+}
+
+.perfil-foto {
+  width: 180px; /* Ajusta el tamaño de la foto */
+  height: 180px; /* Ajusta el tamaño de la foto */
+  border-radius: 50%; /* Hacer la imagen circular */
+  object-fit: cover;
+  border: 4px solid #04abd5; /* Mismo color que el título */
+  margin-bottom: 10px;
+}
+
+.btn-upload {
+  margin-top: 10px;
+  background-color: #04abd5; /* Mismo color que el título */
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+}
+
+.btn-container {
+  text-align: center; /* Centrar los botones */
+}
+
+.btn-primary,
+.btn-secondary {
+  width: 150px; /* Ajusta el ancho de los botones */
+  padding: 10px 0; /* Ajusta el padding para aumentar el tamaño de los botones */
+  font-size: 1.1rem; /* Ajusta el tamaño del texto en los botones */
+}
+
+.btn-primary {
+  margin: 10px; /* Margen para el botón */
+  background-color: #2ecc71; /* Color para el botón Agregar */
+  border-color: #2ecc71; /* Color del borde para el botón Agregar */
+}
+
+.btn-secondary {
+  margin: 10px; /* Margen para el botón */
+  background-color: #0385a5; /* Color para el botón Cancelar */
+  border-color: #0385a5; /* Color del borde para el botón Cancelar */
+  color: #fff; /* Color del texto para el botón Cancelar */
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan según sea necesario */
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-4 {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center; /* Centrar verticalmente */
+}
+
+.justify-content-center {
+  justify-content: center; /* Centrar horizontalmente */
+}
+
+.flex-column {
+  flex-direction: column; /* Disponer los elementos en columna */
+}
+
+/* Evitar el scroll horizontal */
+body {
+  overflow-x: hidden; /* Oculta el scroll horizontal */
+}

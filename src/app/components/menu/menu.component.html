@@ -1,0 +1,85 @@
+<div class="sidebar">
+  <div class="logo-details">
+    <img src="/assets/login/logo-menu.png" alt="logo" class="logo" >
+    
+  </div>
+  
+  <div class="icon-container">
+    <i class="fa-solid fa-question"></i>
+    <i (click)="logout()" class="fa-solid fa-power-off"></i>
+    <i  routerLink="/perfil" class="fa-solid fa-user"></i>
+  </div>
+
+  
+  <ul class="nav-links">
+    <hr>
+    <li>
+      <a routerLink="/inicio" class="btn-sideBar-SubMenu">
+        <i class="fa-solid fa-house"></i>
+        <span class="link_name">Inicio</span>
+      </a>
+    </li>
+    <hr *ngIf="rolUsuario === 2">
+    <li *ngIf="rolUsuario === 2">
+      <a routerLink="/veterinarios" class="btn-sideBar-SubMenu">
+        <i class="fa-solid fa-user-doctor"></i>
+        <span class="link_name">Veterinarios</span>
+      </a>
+    </li>
+    <hr>
+    <li>
+      <a routerLink="/propietarios" class="btn-sideBar-SubMenu">
+        <i class="fa-solid fa-users"></i>  
+        <span class="link_name"> Propietarios</span>
+      </a>
+    </li>
+    <hr>
+    <li>
+      <a routerLink="/mascotas" class="btn-sideBar-SubMenu">
+        <i class="fa-solid fa-paw"></i> 
+        <span class="link_name"> Mascotas </span>
+      </a>
+    </li>
+    <hr>
+    <li>
+      <a routerLink="/medicamentos" class="btn-sideBar-SubMenu">
+        <i class="fa-solid fa-pills"></i> 
+        <span class="link_name"> Medicamentos</span> 
+      </a>
+    </li>
+    <hr>
+    <!-- <li>
+      <a routerLink="" class="btn-sideBar-SubMenu">
+        <i class="fa-solid fa-notes-medical"></i>
+        <span class="link_name"> Historial Médico</span>
+      </a>
+    </li>
+    <hr> -->
+    <li>
+      <a routerLink="/reservas" class="btn-sideBar-SubMenu">
+        <i class="fa-solid fa-bath"></i>
+        <span class="link_name"> Reservas</span>
+      </a>
+    </li>
+    <hr *ngIf="rolUsuario === 2">
+    <li *ngIf="rolUsuario === 2">
+      <a routerLink="/horarios" class="btn-sideBar-SubMenu">
+        <i class="fa-regular fa-calendar-days"></i>
+        <span class="link_name"> Horarios</span>
+      </a>
+    </li>
+    <hr *ngIf="rolUsuario === 2">
+    <li *ngIf="rolUsuario === 2">
+      <a routerLink="/estadisticas" class="btn-sideBar-SubMenu">
+        <i class="fa-solid fa-chart-simple"></i>
+        <span class="link_name"> Estadisticas</span>
+      </a>
+    </li>
+    <hr>
+  </ul>
+</div>
+
+
+
+
+

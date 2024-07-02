@@ -1,0 +1,198 @@
+<!-- components/estadisticas/estadisticas.component.html -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-lg-2 menu-column">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-md-10 col-lg-10 content-column">
+      <div class="content">
+        <div class="filters-card card mb-4">
+          <div class="filters-header">
+            <h1 class="filters-title">Estadísticas de Veterinaria AK</h1>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h2 class="card-title">Reservas</h2>
+              </div>
+              <div class="card-body">
+                <!-- Formulario de Filtro para Reservas -->
+                <div class="filters-body mb-4">
+                  <form [formGroup]="filterForm" (ngSubmit)="filterReservas()">
+                    <div class="row mb-3 align-items-center">
+                      <div class="col-md-6 mb-2">
+                        <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+                        <input type="date" id="fechaInicio" formControlName="fechaInicio" class="form-control">
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <label for="fechaFin" class="form-label">Fecha Fin</label>
+                        <input type="date" id="fechaFin" formControlName="fechaFin" class="form-control">
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <button type="submit" class="btn btn-large btn-primary w-100">Filtrar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Gráfico de Reservas -->
+                <div class="table-responsive">
+                  <div style="display: block;">
+                    <apx-chart
+                      [series]="chartOptions.series"
+                      [chart]="chartOptions.chart"
+                      [xaxis]="chartOptions.xaxis"
+                      [title]="chartOptions.title"
+                      [colors]="chartOptions.colors"
+                      [plotOptions]="chartOptions.plotOptions">
+                    </apx-chart>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h2 class="card-title">Problemas por Sistema</h2>
+              </div>
+              <div class="card-body">
+                <!-- Formulario de Filtro para Problemas -->
+                <div class="filters-body mb-4">
+                  <form [formGroup]="problemasFilterForm" (ngSubmit)="filterProblemas()">
+                    <div class="row mb-3 align-items-center">
+                      <div class="col-md-6 mb-2">
+                        <label for="problemasFechaInicio" class="form-label">Fecha Inicio</label>
+                        <input type="date" id="problemasFechaInicio" formControlName="fechaInicio" class="form-control">
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <label for="problemasFechaFin" class="form-label">Fecha Fin</label>
+                        <input type="date" id="problemasFechaFin" formControlName="fechaFin" class="form-control">
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <button type="submit" class="btn btn-large btn-primary w-100">Filtrar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Gráfico de Problemas -->
+                <div class="table-responsive">
+                  <div style="display: block;">
+                    <apx-chart
+                      [series]="problemasChartOptions.series"
+                      [chart]="problemasChartOptions.chart"
+                      [xaxis]="problemasChartOptions.xaxis"
+                      [title]="problemasChartOptions.title"
+                      [colors]="problemasChartOptions.colors"
+                      [plotOptions]="problemasChartOptions.plotOptions">
+                    </apx-chart>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h2 class="card-title">Exámenes Médicos Solicitados</h2>
+              </div>
+              <div class="card-body">
+                <!-- Formulario de Filtro para Exámenes -->
+                <div class="filters-body mb-4">
+                  <form [formGroup]="examenesFilterForm" (ngSubmit)="filterExamenes()">
+                    <div class="row mb-3 align-items-center">
+                      <div class="col-md-6 mb-2">
+                        <label for="examenesFechaInicio" class="form-label">Fecha Inicio</label>
+                        <input type="date" id="examenesFechaInicio" formControlName="fechaInicio" class="form-control">
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <label for="examenesFechaFin" class="form-label">Fecha Fin</label>
+                        <input type="date" id="examenesFechaFin" formControlName="fechaFin" class="form-control">
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <button type="submit" class="btn btn-large btn-primary w-100">Filtrar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Gráfico de Exámenes -->
+                <div class="table-responsive">
+                  <div style="display: block;">
+                    <apx-chart
+                      [series]="examenesChartOptions.series"
+                      [chart]="examenesChartOptions.chart"
+                      [xaxis]="examenesChartOptions.xaxis"
+                      [title]="examenesChartOptions.title"
+                      [colors]="examenesChartOptions.colors"
+                      [plotOptions]="examenesChartOptions.plotOptions">
+                    </apx-chart>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-header">
+                <h2 class="card-title">Eventos (Consultas, Vacunaciones, Desparasitaciones)</h2>
+              </div>
+              <div class="card-body">
+                <!-- Formulario de Filtro para Eventos -->
+                <div class="filters-body mb-4">
+                  <form [formGroup]="eventosFilterForm" (ngSubmit)="filterEventos()">
+                    <div class="row mb-3 align-items-center">
+                      <div class="col-md-4 mb-2">
+                        <label for="eventosFechaInicio" class="form-label">Fecha Inicio</label>
+                        <input type="date" id="eventosFechaInicio" formControlName="fechaInicio" class="form-control">
+                      </div>
+                      <div class="col-md-4 mb-2">
+                        <label for="eventosFechaFin" class="form-label">Fecha Fin</label>
+                        <input type="date" id="eventosFechaFin" formControlName="fechaFin" class="form-control">
+                      </div>
+                      <div class="col-md-4 mb-2">
+                        <label for="tipoEvento" class="form-label">Tipo de Evento</label>
+                        <select id="tipoEvento" formControlName="tipoEvento" class="form-control">
+                          <option value="todos">Todos</option>
+                          <option value="consultaMedica">Consulta Médica</option>
+                          <option value="vacunacion">Vacunación</option>
+                          <option value="desparasitacion">Desparasitacion</option>
+                        </select>
+                      </div>
+                      <div class="col-md-12 mb-2">
+                        <button type="submit" class="btn btn-large btn-primary w-100">Filtrar</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Gráfico de Eventos -->
+                <div class="table-responsive">
+                  <div style="display: block;">
+                    <apx-chart
+                      [series]="eventosChartOptions.series"
+                      [chart]="eventosChartOptions.chart"
+                      [xaxis]="eventosChartOptions.xaxis"
+                      [title]="eventosChartOptions.title"
+                      [colors]="eventosChartOptions.colors"
+                      [plotOptions]="eventosChartOptions.plotOptions">
+                    </apx-chart>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

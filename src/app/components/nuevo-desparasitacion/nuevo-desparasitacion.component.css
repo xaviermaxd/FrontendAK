@@ -1,0 +1,136 @@
+.mat-dialog-content.dialog-container {
+  overflow-y: hidden; /* Desactiva el desplazamiento vertical predeterminado */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+}
+
+.mat-dialog-content.dialog-container::-webkit-scrollbar {
+  display: none; /* Oculta el scrollbar en Safari y Chrome */
+}
+
+.dialog-form {
+  padding: 20px; /* Agrega padding interno */
+  max-height: 150vh; /* Establece la altura máxima en el 80% del tamaño de la ventana */
+  overflow-y: auto; /* Habilita el desplazamiento vertical cuando el contenido excede la altura máxima */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+label{
+  color: #0385a5;;
+}
+
+.mat-dialog-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+form .form-group {
+  margin-bottom: 15px;
+}
+
+
+.btn-primary,
+.btn-secondary,
+.btn-remove,
+.btn-danger {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px; /* Agrega bordes redondeados a todos los botones */
+}
+
+.btn-primary {
+  background-color: #2ecc71; /* Color para el botón Guardar */
+  border-color: #2ecc71; /* Color del borde para el botón Guardar */
+}
+
+.btn-secondary {
+  background-color: #0385a5; /* Color para el botón Cancelar */
+  border-color: #0385a5; /* Color del borde para el botón Cancelar */
+  color: #fff; /* Color del texto para el botón Cancelar */
+}
+
+
+
+.btn-remove {
+  background-color: #f92a2a; /* Color para el botón Eliminar */
+  border-color: #ff0505; /* Color del borde para el botón Eliminar */
+  color: #fff;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan según sea necesario */
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-4, .col-md-12 {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center; /* Centrar verticalmente */
+}
+
+.justify-content-center {
+  justify-content: center; /* Centrar horizontalmente */
+}
+
+.flex-column {
+  flex-direction: column; /* Disponer los elementos en columna */
+}
+
+/* Estilos para los inputs y select */
+.form-control,
+select {
+  border-radius: 15px; /* Agrega bordes redondeados */
+}
+
+/* Estilos para el título */
+h2 {
+  background-color: #04abd5; /* Fondo de color para el título */
+  color: white; /* Color de texto blanco */
+  padding: 10px; /* Ajusta el padding */
+}
+/* Estilo para alinear los botones al inicio */
+.btn-acciones {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 2px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center; /* Centra los botones en su contenedor */
+  margin-top: 20px; /* Ajusta el margen superior */
+
+}
+.btn-container .btn {
+  margin-right: 10px; /* Ajusta el espacio entre los botones según tu preferencia */
+}
+h3{
+  background-color: #e2f1fd;
+  color: #04abd5;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+hr {
+  border: none;
+  border-top: 4px dotted #027387;
+  margin: 10px 0 5px;
+}

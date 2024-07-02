@@ -1,0 +1,330 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 col-lg-2 menu-column">
+        <app-menu></app-menu>
+      </div>
+      <div class="col-md-10 col-lg-10 content-column">
+        <div class="content">
+          <!-- Formulario de Filtro -->
+          <div class="filters-card card mb-4">
+            <div class="filters-header">
+              <h1 class="filters-title">Registrar Nueva Consulta Médica</h1>
+            </div>
+            <div class="filters-body">
+              <hr class="line">
+              <div class="stepper">
+                <span *ngFor="let step of [0, 1, 2, 3]; let i = index" [class.active]="currentStep === i">
+                  {{ ['Datos Anamnesicos', 'Signos Vitales', 'Revisión por Sistemas', 'Decisión Médica'][i] }}
+                </span>
+              </div>
+              <hr class="line">
+              <form [formGroup]="consultaMedicaForm" (ngSubmit)="submit()" class="form-container">
+                <div *ngIf="currentStep === 0">
+                  <!-- Primera parte – Datos Anamnesicos -->
+                  <div class="form-group">
+                    <label for="fecha_consulta">Fecha de Consulta  <span class="text-danger">*</span></label>
+                    <input type="datetime-local" id="fecha_consulta" formControlName="fecha_consulta" class="form-control" required>
+                </div>
+                <!-- Distribución de Motivo de Consulta -->
+                <div class="form-group d-flex align-items-center">
+                  <h3>Motivo de Consulta</h3>
+                  <button type="button" (click)="addMotivoConsulta()" class="btn btn-secondary btn-sm ms-3">Agregar Motivo</button>
+              </div>
+              <div formArrayName="motivoConsultas" *ngFor="let motivo of motivoConsultasArray.controls; let i = index">
+                  <div [formGroupName]="i" class="form-group d-flex align-items-center">
+                      <div class="flex-grow-1 me-3">
+                          <label for="descripcion">Descripción  <span class="text-danger">*</span></label>
+                          <input type="text" id="descripcion" formControlName="descripcion" class="form-control" required>
+                      </div>
+                      <button type="button" (click)="removeMotivoConsulta(i)" class="btn btn-danger btn-sm" *ngIf="motivoConsultasArray.length > 1">Eliminar Motivo</button>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="descripcion_propietario">Descripción del Propietario  <span class="text-danger">*</span></label>
+                <input type="text" id="descripcion_propietario" formControlName="descripcion_propietario" class="form-control">
+            </div>
+                <!-- Distribución en columnas de 3 con padding -->
+                <div class="row">
+                  <div class="col-md-4 p-2">
+                      <div class="form-group">
+                          <label for="curso">Curso  <span class="text-danger">*</span></label>
+                          <input type="number" id="curso" formControlName="curso" class="form-control" required>
+                      </div>
+                  </div>
+                  <div class="col-md-4 p-2">
+                      <div class="form-group">
+                          <label for="tiempo">Tiempo  <span class="text-danger">*</span></label>
+                          <select id="tiempo" formControlName="tiempo" class="form-control">
+                              <option value="Años">Años</option>
+                              <option value="Dias">Días</option>
+                              <option value="Horas">Horas</option>
+                              <option value="Mes(es)">Mes(es)</option>
+                              <option value="Minutos">Minutos</option>
+                              <option value="No Registra">No Registra</option>
+                              <option value="Semanas">Semanas</option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+
+
+              <!-- Distribución en columnas de 3 con padding -->
+              <div class="row">
+                <div class="col-md-4 p-2">
+                    <div class="form-group">
+                        <label for="estado_general_id">Estado General</label>
+                        <select id="estado_general_id" formControlName="estado_general_id" class="form-control" >
+                            <option *ngFor="let estado of estadoGenerales" [value]="estado.id">{{ estado.nombre }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4 p-2">
+                    <div class="form-group">
+                        <label for="status_mental_id">Status Mental</label>
+                        <select id="status_mental_id" formControlName="status_mental_id" class="form-control" >
+                            <option *ngFor="let status of statusMentales" [value]="status.id">{{ status.nombre }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4 p-2">
+                    <div class="form-group">
+                        <label for="temperamento_id">Temperamento</label>
+                        <select id="temperamento_id" formControlName="temperamento_id" class="form-control" >
+                            <option *ngFor="let temperamento of temperamentos" [value]="temperamento.id">{{ temperamento.nombre }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+              <div class="row">
+                <div class="col-md-4 p-2">
+                    <div class="form-group">
+                        <label for="comportamiento_id">Comportamiento</label>
+                        <select id="comportamiento_id" formControlName="comportamiento_id" class="form-control" >
+                            <option *ngFor="let comportamiento of comportamientos" [value]="comportamiento.id">{{ comportamiento.nombre }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4 p-2">
+                    <div class="form-group">
+                        <label for="condicion_corporal_id">Condición Corporal</label>
+                        <select id="condicion_corporal_id" formControlName="condicion_corporal_id" class="form-control" >
+                            <option *ngFor="let condicion of condicionCorporales" [value]="condicion.id">{{ condicion.nombre }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+  
+                <div *ngIf="currentStep === 1">
+                  <!-- Segunda parte – Signos Vitales -->
+                  <div class="row">
+                    <div class="col-md-3" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="patron_fc_id">Patrón FC  <span class="text-danger">*</span></label>
+                            <select id="patron_fc_id" formControlName="patron_fc_id" class="form-control" required>
+                                <option *ngFor="let patron of patronFCs" [value]="patron.id">{{ patron.nombre }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="frecuencia_cardiaca">Frecuencia Cardíaca (ppm)  <span class="text-danger">*</span></label>
+                            <input type="number" id="frecuencia_cardiaca" formControlName="frecuencia_cardiaca" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="patron_fr_id">Patrón FR  <span class="text-danger">*</span></label>
+                            <select id="patron_fr_id" formControlName="patron_fr_id" class="form-control" required>
+                                <option *ngFor="let patron of patronFRs" [value]="patron.id">{{ patron.nombre }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="padding-right: 10px; padding-left: 10px;">
+                      <div class="form-group">
+                          <label for="frecuencia_respiratoria">Frecuencia Respiratoria (rpm)  <span class="text-danger">*</span></label>
+                          <input type="number" id="frecuencia_respiratoria" formControlName="frecuencia_respiratoria" class="form-control">
+                      </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="glucemia">Glucemia (mg/dl)</label>
+                            <input type="number" id="glucemia" formControlName="glucemia" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="pas">PAS (mmHg)</label>
+                            <input type="number" id="pas" formControlName="pas" class="form-control">
+                        </div>
+                    </div>
+                      <div class="col-md-3" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="pad">PAD (mmHg)</label>
+                            <input type="number" id="pad" formControlName="pad" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-3" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="pam">PAM (mmHg)</label>
+                            <input type="number" id="pam" formControlName="pam" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="pulso_id">Pulso</label>
+                            <select id="pulso_id" formControlName="pulso_id" class="form-control" >
+                                <option *ngFor="let pulso of pulsos" [value]="pulso.id">{{ pulso.nombre }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="padding-right: 10px; padding-left: 10px;">
+                      <div class="form-group">
+                          <label for="peso">Peso (kg) <span class="text-danger">*</span></label>
+                          <input type="number" id="peso" formControlName="peso" class="form-control" required>
+                      </div>
+                  </div>
+                  <div class="col-md-4" style="padding-right: 10px; padding-left: 10px;">
+                      <div class="form-group">
+                          <label for="temperatura">Temperatura (°C) <span class="text-danger">*</span></label>
+                          <input type="number" id="temperatura" formControlName="temperatura" class="form-control" required>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                    
+                    <div class="col-md-4" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="mucosas_id">Mucosas</label>
+                            <select id="mucosas_id" formControlName="mucosas_id" class="form-control" >
+                                <option *ngFor="let mucosa of mucosas" [value]="mucosa.id">{{ mucosa.nombre }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="tiempo_llenado_capilar_id">Tiempo de Llenado Capilar (T.LL.C)</label>
+                            <select id="tiempo_llenado_capilar_id" formControlName="tiempo_llenado_capilar_id" class="form-control" >
+                                <option *ngFor="let tiempo of tiempoLlenadoCapilares" [value]="tiempo.id">{{ tiempo.nombre }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="padding-right: 10px; padding-left: 10px;">
+                        <div class="form-group">
+                            <label for="estado_hidratacion_id">Estado de Hidratación</label>
+                            <select id="estado_hidratacion_id" formControlName="estado_hidratacion_id" class="form-control" >
+                                <option *ngFor="let estado of estadoHidrataciones" [value]="estado.id">{{ estado.nombre }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  
+                <div *ngIf="currentStep === 2">
+                  <!-- Tercera parte – Revisión por Sistemas -->
+                  <div formArrayName="listaProblemas" *ngFor="let problema of listaProblemasArray.controls; let i = index">
+                    <div [formGroupName]="i" class="form-group">
+                      <h3>Problema {{ i + 1 }}</h3>
+                      <div class="form-group">
+                        <label for="sistema_id">Sistema  <span class="text-danger">*</span></label>
+                        <select id="sistema_id" formControlName="sistema_id" class="form-control" required>
+                          <option *ngFor="let sistema of sistemas" [value]="sistema.id">{{ sistema.nombre }}</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="hallazgo_fisico">Hallazgo Físico  <span class="text-danger">*</span></label>
+                        <input type="text" id="hallazgo_fisico" formControlName="hallazgo_fisico" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                        <label for="observacion">Observación</label>
+                        <input type="text" id="observacion" formControlName="observacion" class="form-control" >
+                      </div>
+                      <button type="button" (click)="removeListaProblemas(i)" class="btn btn-danger" *ngIf="listaProblemasArray.length > 1">Eliminar Problema</button>
+                    </div>
+                  </div>
+                  <button type="button" (click)="addListaProblemas()" class="btn btn-secondary">Agregar Problema</button>
+                </div>
+  
+                <div *ngIf="currentStep === 3">
+                  <!-- Cuarta parte – Decisión Médica -->
+                  <div class="form-group">
+                    <label for="necesita_examenes">¿Necesitas realizar exámenes complementarios?</label>
+                    <div class="form-check">
+                      <input type="radio" id="necesita_examenesSi" formControlName="necesita_examenes" class="form-check-input" [value]="true">
+                      <label class="form-check-label" for="necesita_examenesSi">Sí</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="radio" id="necesita_examenesNo" formControlName="necesita_examenes" class="form-check-input" [value]="false">
+                      <label class="form-check-label" for="necesita_examenesNo">No</label>
+                    </div>
+                  </div>
+                  <div *ngIf="consultaMedicaForm.get('necesita_examenes')?.value">
+                    <div formArrayName="examenesConsultas" *ngFor="let examen of examenesConsultasArray.controls; let i = index">
+                      <div [formGroupName]="i" class="form-group">
+                        <h3>Examen {{ i + 1 }}</h3>
+                        <div class="form-group">
+                          <label for="examen_medico_id">Examen <span class="text-danger">*</span></label>
+                          <select id="examen_medico_id" formControlName="examen_medico_id" class="form-control" required>
+                            <option *ngFor="let examen of examenesMedicos" [value]="examen.id">{{ examen.nombre }}</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="observacion">Observación <span class="text-danger">*</span></label>
+                          <input type="text" id="observacion" formControlName="observacion" class="form-control" required>
+                        </div>
+                        <button type="button" (click)="removeExamenesConsultas(i)" class="btn btn-danger" *ngIf="examenesConsultasArray.length > 1">Eliminar Examen</button>
+                      </div>
+                    </div>
+                    <button type="button" (click)="addExamenesConsultas()" class="btn btn-secondary">Agregar Examen</button>
+                  </div>
+                  <div class="form-group">
+                    <label for="realizo_tratamientos">¿Realizaste tratamientos durante la consulta?</label>
+                    <div class="form-check">
+                      <input type="radio" id="realizo_tratamientosSi" formControlName="realizo_tratamientos" class="form-check-input" [value]="true">
+                      <label class="form-check-label" for="realizo_tratamientosSi">Sí</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="radio" id="realizo_tratamientosNo" formControlName="realizo_tratamientos" class="form-check-input" [value]="false">
+                      <label class="form-check-label" for="realizo_tratamientosNo">No</label>
+                    </div>
+                  </div>
+                  <div *ngIf="consultaMedicaForm.get('realizo_tratamientos')?.value">
+                    <div class="form-group">
+                      <label for="descripcion_tratamiento">Describe aquí el tratamiento durante consulta <span class="text-danger">*</span></label>
+                      <input type="text" id="descripcion_tratamiento" formControlName="descripcion_tratamiento" class="form-control" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="diagnostico_presuntivo">¿Cuál es tu diagnóstico presuntivo?</label>
+                    <input type="text" id="diagnostico_presuntivo" formControlName="diagnostico_presuntivo" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="observaciones_adicionales">¿Tienes observaciones adicionales?</label>
+                    <input type="text" id="observaciones_adicionales" formControlName="observaciones_adicionales" class="form-control">
+                  </div>
+                </div>
+  
+  
+                <div class="form-navigation">
+                  <button type="button" class="btn btn-secondary" (click)="prevStep()" [disabled]="currentStep === 0">Anterior</button>
+                  <button type="button" class="btn btn-secondary" (click)="nextStep()" [disabled]="currentStep === 3">Siguiente</button>
+                  <button type="submit" class="btn btn-primary" [disabled]="currentStep !== 3">Guardar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

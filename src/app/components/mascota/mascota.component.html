@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-lg-2 menu-column">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-md-10 col-lg-10 content-column">
+      <div class="content">
+        <div class="filters-card card mb-4">
+          <div class="filters-header">
+            <h1 class="filters-title">Gestión de Mascotas</h1>
+          </div>
+          <div class="filters-body">
+            <div class="row mb-3 align-items-center">
+              <!-- Primera fila -->
+              <div class="col-md-4 mb-2">
+                <h6>Nombre</h6>
+                <input [(ngModel)]="nombreBusqueda" type="text" class="form-control" placeholder="Búsqueda por nombre de mascota">
+              </div>
+              <div class="col-md-4 mb-2">
+                <h6>Propietario</h6>
+                <input [(ngModel)]="propietarioBusqueda" type="text" class="form-control" placeholder="Búsqueda por nombre de propietario">
+              </div>
+              <div class="col-md-4 ">
+                <button class="btn btn-primary " (click)="buscar()">Filtrar</button>
+              </div>
+            </div>
+            <div class="row mb-3 align-items-center">
+              <!-- Segunda fila -->
+              <div class="col-md-4 mb-2">
+                <h6>Especie</h6>
+                <select [(ngModel)]="especieSeleccionada" class="form-control" (change)="buscar()">
+                  <option value="todos">Todos</option>
+                  <option value="perro">Perro</option>
+                  <option value="gato">Gato</option>
+                  <option value="conejo">Conejo</option>
+                  <option value="ave">Ave</option>
+                  <option value="hamster">Hamster</option>
+                  <option value="tortuga">Tortuga</option>
+                  <option value="otros">Otros</option>
+                </select>
+              </div>
+              <div class="col-md-4 mb-2">
+                <!-- Espacio vacío -->
+              </div>
+              <div class="col-md-4 ">
+                <button class="btn btn-secondary " (click)="limpiarFiltros()">Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-card card">
+          <div class="table-responsive">
+            <div class="header-container">
+              <h1 class="title">Listado de Mascotas</h1>
+              <app-paginacion [totalItems]="totalItems" [itemsPerPage]="pageSize" [currentPage]="page" (pageChange)="page = $event; getMascotas()"></app-paginacion>
+            </div>
+            <table class="table-hover">
+              <thead>
+                <tr>
+                  
+                  <th>Nombre</th>
+                  <th>Especie</th>
+                  <th>Raza</th>
+                  <th>Sexo</th>
+                  <th>Fecha de Nacimiento</th>
+                  <th>Color</th>
+                  <th>Alergias</th>
+                  <th>Propietario</th>
+                  <th>Teléfono del Propietario</th>
+                  <th>Ver</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let mascota of mascotas">
+                  
+                  <td>{{ mascota.Nombre }}</td>
+                  <td>{{ mascota.Especie }}</td>
+                  <td>{{ mascota.Raza }}</td>
+                  <td>{{ mascota.Sexo }}</td>
+                  <td>{{ mascota.FechaNacimiento }}</td>
+                  <td>{{ mascota.Color }}</td>
+                  <td>{{ mascota.Alergias }}</td>
+                  <td>{{ mascota.Propietario.Nombre }} {{ mascota.Propietario.ApellidoPaterno }}</td>
+                  <td>{{ mascota.Propietario.Telefono }}</td>
+                  <td>
+                    <button (click)="verPerfil(mascota.MascotaID)" class="btn"><i class="fa-solid fa-eye"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

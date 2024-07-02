@@ -1,0 +1,89 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-lg-2 menu-column">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-md-10 col-lg-10 content-column">
+      <div class="content">
+        <div class="filters-card card mb-4">
+          <div class="filters-header">
+            <h1 class="filters-title">Gestión de Medicamentos</h1>
+          </div>
+          <div class="filters-body">
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-3 mb-2">
+                <h6>Nombre</h6>
+                <input [(ngModel)]="nombreBusqueda" type="text" class="form-control" placeholder="Búsqueda por nombre">
+              </div>
+              <div class="col-md-3 mb-2">
+                <h6>Laboratorio</h6>
+                <select [(ngModel)]="laboratorioBusqueda" class="form-control">
+                  <option value="">Seleccione Laboratorio</option>
+                  <option *ngFor="let laboratorio of laboratorios" [value]="laboratorio.id">{{ laboratorio.nombre }}</option>
+                </select>
+              </div>
+              <div class="col-md-3 ">
+                <button class="btn btn-primary " (click)="buscar()">Buscar</button>
+              </div>
+              <div class="col-md-3 ">
+                <button class="btn  btn-secondary " (click)="limpiarFiltros()">Limpiar</button>
+              </div>
+            </div>
+            <div class="row mb-3 align-items-center">
+              <div class="col-md-3 mb-2">
+                <h6>Uso Terapeutico</h6>
+                <select [(ngModel)]="usoTerapeuticoBusqueda" class="form-control">
+                  <option value="">Seleccione Uso Terapéutico</option>
+                  <option *ngFor="let uso of usosTerapeuticos" [value]="uso.id">{{ uso.nombre }}</option>
+                </select>
+              </div>
+              <div class="col-md-3 mb-2">
+                <h6>Vía de Administración</h6>
+                <select [(ngModel)]="viaAdministracionBusqueda" class="form-control">
+                  <option value="">Seleccione Vía de Administración</option>
+                  <option *ngFor="let via of viasAdministracion" [value]="via.id">{{ via.nombre }}</option>
+                </select>
+              </div>
+              <div class="col-md-3 ">
+                <button (click)="agregarMedicamento()" class="btn btn-primary ">Agregar Medicamento</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-card card">
+          <div class="table-responsive">
+            <div class="header-container">
+              <h1 class="title">Listado de Medicamentos</h1>
+              <app-paginacion [totalItems]="totalItems" [itemsPerPage]="pageSize" [currentPage]="page" (pageChange)="page = $event; getMedicamentos()"></app-paginacion>
+            </div>
+            <table class="table-hover">
+              <thead>
+                <tr>
+                  
+                  <th>Nombre</th>
+                  <th>Laboratorio</th>
+                  <th>Uso Terapéutico</th>
+                  <th>Vía de Administración</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let medicamento of medicamentos">
+                  <!-- <td>{{ medicamento.id }}</td> -->
+                  <td>{{ medicamento.nombre }}</td>
+                  <td>{{ medicamento.Laboratorio?.nombre }}</td>
+                  <td>{{ medicamento.UsoTerapeutico?.nombre }}</td>
+                  <td>{{ medicamento.ViaAdministracion?.nombre }}</td>
+                  <td>
+                    <button (click)="verDetalle(medicamento.id)" class="btn"><i class="fa-solid fa-eye"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

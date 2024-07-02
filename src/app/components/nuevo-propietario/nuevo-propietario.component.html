@@ -1,0 +1,56 @@
+<div class="dialog-container">
+  <h2>Agregar Nuevo Propietario</h2>
+  <div class="title-underline"></div>
+  <form [formGroup]="propietarioForm" (ngSubmit)="guardar()">
+    <div class="row">
+      <div class="col-md-4 d-flex align-items-center justify-content-center flex-column">
+        <label for="foto" class="form-label foto-label">Agregar Foto</label>
+        <div class="foto-container">
+          <img [src]="fotoURL" class="img-fluid perfil-foto" alt="Foto del propietario">
+        </div>
+        <input id="foto" type="file" (change)="onFileSelected($event)" class="form-control-file">
+        <label for="foto" class="btn btn-upload">Subir Foto</label>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group" [ngClass]="{'has-error': propietarioForm.get('Nombre')?.invalid && propietarioForm.get('Nombre')?.touched}">
+          <label for="nombre">Nombre <span class="text-danger">*</span></label>
+          <input id="nombre" type="text" class="form-control" formControlName="Nombre">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': propietarioForm.get('ApellidoPaterno')?.invalid && propietarioForm.get('ApellidoPaterno')?.touched}">
+          <label for="apellidoPaterno">Apellido Paterno <span class="text-danger">*</span></label>
+          <input id="apellidoPaterno" type="text" class="form-control" formControlName="ApellidoPaterno">
+        </div>
+        <div class="form-group">
+          <label for="direccion">Dirección</label>
+          <input id="direccion" type="text" class="form-control" formControlName="Direccion">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': propietarioForm.get('Telefono')?.invalid && propietarioForm.get('Telefono')?.touched}">
+          <label for="telefono">Teléfono <span class="text-danger">*</span></label>
+          <input id="telefono" type="text" class="form-control" formControlName="Telefono">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="segundoNombre">Segundo Nombre</label>
+          <input id="segundoNombre" type="text" class="form-control" formControlName="SegundoNombre">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': propietarioForm.get('ApellidoMaterno')?.invalid && propietarioForm.get('ApellidoMaterno')?.touched}">
+          <label for="apellidoMaterno">Apellido Materno <span class="text-danger">*</span></label>
+          <input id="apellidoMaterno" type="text" class="form-control" formControlName="ApellidoMaterno">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': propietarioForm.get('CorreoElectronico')?.invalid && propietarioForm.get('CorreoElectronico')?.touched}">
+          <label for="correo">Correo Electrónico <span class="text-danger">*</span></label>
+          <input id="correo" type="email" class="form-control" formControlName="CorreoElectronico">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': propietarioForm.get('DNI')?.invalid && propietarioForm.get('DNI')?.touched}">
+          <label for="dni">DNI <span class="text-danger">*</span></label>
+          <input id="dni" type="text" class="form-control" formControlName="DNI">
+        </div>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button type="submit" class="btn btn-primary">Guardar</button>
+      <button type="button" class="btn btn-secondary" (click)="dialogRef.close()">Cancelar</button>
+    </div>
+  </form>
+</div>

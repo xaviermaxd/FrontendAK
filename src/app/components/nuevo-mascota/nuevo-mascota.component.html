@@ -1,0 +1,69 @@
+<div class="dialog-container">
+  <h2>Agregar Nueva Mascota</h2>
+  <div class="title-underline"></div>
+  <form [formGroup]="form" (ngSubmit)="agregarMascota()">
+    <div class="row">
+      <div class="col-md-4 d-flex align-items-center justify-content-center flex-column">
+        <label for="foto" class="form-label foto-label">Agregar Foto</label>
+        <div class="foto-container">
+          <img [src]="fotoURL" class="img-fluid perfil-foto" alt="Foto de la mascota">
+        </div>
+        <input id="foto" type="file" (change)="onFileSelected($event)" class="form-control-file">
+        <label for="foto" class="btn btn-upload">Subir Foto</label>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="nombre">Nombre <span class="text-danger">*</span></label>
+              <input id="nombre" type="text" class="form-control" formControlName="Nombre" [ngClass]="{'is-invalid': form.get('Nombre')?.invalid && form.get('Nombre')?.touched}" required>
+            </div>
+            <div class="form-group">
+              <label for="especie">Especie <span class="text-danger">*</span></label>
+              <input id="especie" type="text" class="form-control" formControlName="Especie" [ngClass]="{'is-invalid': form.get('Especie')?.invalid && form.get('Especie')?.touched}" required>
+            </div>
+            <div class="form-group">
+              <label for="raza">Raza</label>
+              <input id="raza" type="text" class="form-control" formControlName="Raza">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="fechaNacimiento">Fecha de Nacimiento</label>
+              <input id="fechaNacimiento" type="date" class="form-control" formControlName="FechaNacimiento">
+            </div>
+            <div class="form-group">
+              <label for="color">Color</label>
+              <input id="color" type="text" class="form-control" formControlName="Color">
+            </div>
+            <div class="form-group">
+              <label>Sexo <span class="text-danger">*</span></label>
+              <div class="d-flex justify-content-start align-items-center">
+                <div class="form-check me-3">
+                  <input class="form-check-input" type="radio" id="flexRadioDefault1" formControlName="Sexo" value="F" [ngClass]="{'is-invalid': form.get('Sexo')?.invalid && form.get('Sexo')?.touched}">
+                  <label class="form-check-label" for="flexRadioDefault1">F</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" id="flexRadioDefault2" formControlName="Sexo" value="M" [ngClass]="{'is-invalid': form.get('Sexo')?.invalid && form.get('Sexo')?.touched}">
+                  <label class="form-check-label" for="flexRadioDefault2">M</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="alergias">Alergias</label>
+              <textarea id="alergias" class="form-control" formControlName="Alergias"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button type="submit" class="btn btn-primary">Guardar</button>
+      <button type="button" class="btn btn-secondary" (click)="onNoClick()">Cancelar</button>
+    </div>
+  </form>
+</div>

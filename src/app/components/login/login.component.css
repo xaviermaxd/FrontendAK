@@ -1,0 +1,261 @@
+/**  =====================
+    Authentication css start
+==========================  **/
+.auth-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  min-height: 100vh;
+  /* background-image: url('./../../../assets/login/inicio1.jpg'); */
+  background-size: cover;
+  background-position: center;
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+
+  @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    display: block;
+    margin: 0 auto;
+
+    > .row {
+      min-height: 100vh;
+
+      > .aut-bg-img {
+        min-height: 100vh;
+      }
+    }
+  }
+
+  .saprator {
+    position: relative;
+    margin: 8px 0;
+
+    span {
+      background: #fff;
+      position: relative;
+      padding: 0 10px;
+      z-index: 5;
+      font-size: 20px;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #ddd; /* Color del borde, cambia según el diseño */
+      z-index: 1;
+    }
+  }
+
+  a,
+  p > a {
+    color: #027a90; /* Cambia el color según sea necesario */
+    font-weight: 600;
+  }
+
+  .input-group {
+    background: transparent;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: row; /* Muestra los elementos en una fila */
+    overflow: hidden;
+    margin-bottom: 0;
+    padding: 0; /* Se estableció padding a 0 para que la imagen ocupe toda la altura */
+    box-shadow: 0 1px 30px -1px rgb(111, 111, 111);
+
+    .card-body {
+      padding: 30px; /* Ajusta el padding si es necesario */
+      background: #fff; /* Fondo blanco para el contenido del formulario */
+    }
+
+    @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      display: block;
+    }
+  }
+
+  > div {
+    z-index: 5;
+  }
+
+  .auth-content {
+    position: relative;
+    padding: 15px;
+
+    z-index: 5;
+
+    &:not(.container) {
+      width: 60%; /* Ajusta el ancho del contenido general si es necesario */
+
+      .card-body {
+        padding: 30px; /* Ajusta el padding del contenido del card */
+      }
+    }
+
+    @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      margin: 0 auto;
+    }
+  }
+
+  .auth-side-img {
+    background-color: #f5f5f5; /* Color de fondo opcional */
+    max-width: 100%; /* Asegura que la imagen no desborde el contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Asegura que la imagen ocupe toda la altura del card */
+    /* Añadimos un ajuste para que la imagen ocupe todo el ancho de la columna */
+    overflow: hidden;
+  }
+
+  .auth-side-img img {
+    max-width: 100%;
+    height: 100%; /* Asegura que la imagen ocupe toda la altura del contenedor */
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsión */
+  }
+
+  @media (max-width: 767px) {
+    .auth-wrapper {
+      flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    }
+
+    .auth-content {
+      width: 100%;
+    }
+
+    .card {
+      flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
+    }
+
+    .auth-side-img {
+      display: none; /* Oculta la imagen en pantallas pequeñas */
+    }
+
+    .card-body {
+      padding: 20px; /* Ajusta el padding en pantallas pequeñas */
+    }
+  }
+
+  .auth-side-form {
+    position: relative;
+    min-height: 100%;
+    background: #fff;
+    display: flex; /* Cambiado de inline-flex a flex */
+    flex-direction: column; /* Añadido para asegurar que el contenido se alinee verticalmente */
+    justify-content: center; /* Centra verticalmente el contenido */
+    /* box-shadow: -2px 0 7px -2px rgba(0, 0, 0, 0.5); */
+
+    > * {
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Añadido para centrar el formulario verticalmente con margen superior */
+    .card-body {
+      margin-top: 30px; /* Añadido un margen superior al formulario */
+    }
+
+    @media only screen and (max-width: 991px) {
+      width: 100%;
+      justify-content: center;
+
+      .auth-content:not(.container) {
+        max-width: 350px;
+      }
+    }
+  }
+
+  &.aut-bg-img {
+    .auth-side-form {
+      @media (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        height: 100vh;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .card {
+      .card-body {
+        padding: 30px 15px;
+      }
+    }
+  }
+
+  &.offline {
+    background-image: none;
+
+    h1 {
+      font-size: 87px;
+      font-weight: 700;
+    }
+
+    &:before {
+      display: none;
+    }
+  }
+
+  .card-body .carousel-indicators {
+    margin: 15px 0 10px;
+    bottom: 0;
+
+    li {
+      width: 50px;
+      background-color: transparentize(#027a90, 0.6); /* Cambia el color según sea necesario */
+      border-radius: 5px;
+      height: 4px;
+
+      &.active {
+        background-color: #027a90; /* Cambia el color según sea necesario */
+      }
+    }
+  }
+
+  .img-logo-overlay {
+    position: absolute;
+    top: 40px;
+    left: 50px;
+  }
+
+  /* Estilo para los campos del formulario */
+  .input-group {
+    background: transparent;
+  }
+
+  /* Estilo para el botón de inicio de sesión */
+  .btn-outline-primary {
+    border: 2px solid #027a90; /* Color del borde */
+    color: #027a90; /* Color del texto */
+    background-color: transparent; /* Fondo transparente */
+    font-size: 1em; /* Tamaño de fuente */
+  }
+
+  /* Estilo para el texto de la contraseña olvidada */
+  .text-muted {
+    color: #888888; /* Color del texto */
+  }
+
+  .text-center img {
+    max-width: 150px; /* Ajusta el tamaño del logo si es necesario */
+  }
+
+  .text-center h4 {
+    margin-bottom: 20px; /* Ajusta el margen debajo del título */
+  }
+
+  .d-grid {
+    margin-top: 20px; /* Añadido para darle espacio al botón de inicio de sesión */
+  }
+
+  /* Margen superior al formulario */
+  .auth-side-form {
+    margin-top: 30px; /* Ajusta el margen superior del formulario */
+  }
+}

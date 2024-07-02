@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 col-lg-2 menu-column">
+        <app-menu></app-menu>
+      </div>
+      <div class="col-md-10 col-lg-10 content-column">
+        <div class="content">
+          <!-- Formulario de Reserva -->
+          <div class="filters-card card mb-4">
+            <div class="filters-header">
+              <h1 class="filters-title reserva-title">Reservar Citas de Baños</h1>
+            </div>
+            <div class="filters-body">
+              <form [formGroup]="reservaForm" (ngSubmit)="createReserva()">
+                <div class="row mb-3 align-items-center">
+                  <!-- Inputs y Botones -->
+                  <div class="col-md-8">
+                    <div class="row mb-3 align-items-center">
+                      <div class="col-md-6 mb-2">
+                        <label for="propietario" class="form-label">Propietario</label>
+                        <select id="propietario" formControlName="PropietarioID" (change)="onPropietarioChange($event)" class="form-control" required>
+                          <option value="">Seleccionar</option>
+                          <option *ngFor="let propietario of propietarios" [value]="propietario.PropietarioID">{{ propietario.Nombre }} {{ propietario.ApellidoPaterno }} {{ propietario.ApellidoMaterno }}</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <label for="mascota" class="form-label">Mascota</label>
+                        <select id="mascota" formControlName="MascotaID" class="form-control" required>
+                          <option value="">Seleccionar</option>
+                          <option *ngFor="let mascota of mascotas" [value]="mascota.MascotaID">{{ mascota.Nombre }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                      <div class="col-md-6 mb-2">
+                        <button type="submit" class="btn  btn-primary" [disabled]="reservaForm.invalid || !selectedDate || !selectedTurno">Reservar</button>
+                      </div>
+                      <div class="col-md-6 mb-2">
+                        <button type="button" class="btn  btn-secondary " (click)="limpiarCampos()">Limpiar Campos</button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Textarea Notas -->
+                  <div class="col-md-4 mb-2 textarea-container">
+                    <label for="notas" class="form-label">Notas</label>
+                    <textarea id="notas" formControlName="Notas" class="form-control textarea-large" placeholder="Agregar comentarios"></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+  
+          <!-- Turnos Disponibles -->
+          <div class="table-card card">
+            <div class="table-responsive">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <button class="btn btn-large" [ngClass]="{'btn-secondary': week === 'current', 'btn-primary': week === 'next'}" (click)="changeWeek('current')">Semana Actual</button>
+                <h3 class="turnos-title">Turnos Disponibles</h3>
+                <button class="btn btn-large" [ngClass]="{'btn-secondary': week === 'next', 'btn-primary': week === 'current'}" (click)="changeWeek('next')">Próxima Semana</button>
+              </div>
+              <div class="calendar-container">
+                <div class="hours-column">
+                  <div class="grid-header"></div>
+                  <div *ngFor="let hour of hours" class="hour-cell">{{ hour }}</div>
+                </div>
+                <div class="calendar-grid">
+                  <div *ngFor="let day of currentWeek" class="day-column">
+                    <div class="grid-header">{{ capitalizeFirstLetter(day.format('dddd')) }} {{ day.format('D/MM') }}</div>
+                    <div *ngFor="let turnoData of getTurnosPorDia(day)">
+                      <div class="turno" (click)="selectTurno(turnoData.turno, day)"
+                           [ngClass]="{
+                             'selected': selectedTurno?.TurnoID === turnoData.turno.TurnoID && selectedDate?.isSame(day, 'day'),
+                             'disabled': isTurnoDisabled(turnoData.turno, day)
+                           }"
+                           [ngStyle]="{
+                             'height.px': turnoData.height,
+                             'top.px': (turnoData.startRow - 1) * 20
+                           }">
+                        <p class="turno-hora">{{ formatHora(turnoData.turno.HoraInicio) }} - {{ formatHora(turnoData.turno.HoraFin) }}</p>
+                        <p class="turno-hora">Cupos Disponibles: {{ getCuposDisponibles(turnoData.turno, dateService.formatDate(day)) }}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

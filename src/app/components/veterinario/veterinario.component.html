@@ -1,0 +1,86 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-lg-2 menu-column">
+            <app-menu></app-menu>
+        </div>
+        <div class="col-md-10 col-lg-10 content-column">
+            <div class="content">
+                <!-- Filtros de Búsqueda -->
+                <div class="filters-card card mb-4">
+                    <div class="filters-header">
+                        <h1 class="filters-title">Gestión de Veterinarios</h1>
+                    </div>
+                    <div class="filters-body">
+                        <div class="row mb-3 align-items-center">
+                            <div class="col-md-3 mb-2">
+                                <h6>Nombre</h6>
+                                <input [(ngModel)]="nombreBusqueda" type="text" class="form-control" placeholder="Búsqueda por nombre">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <h6>Apellido Paterno</h6>
+                                <input [(ngModel)]="apellidoPaternoBusqueda" type="text" class="form-control" placeholder="Búsqueda por apellido paterno">
+                            </div>
+                            <div class="col-md-3 ">
+                                <button class="btn btn-primary " (click)="buscar()">Buscar</button>
+                            </div>
+                            <div class="col-md-3 ">
+                                <button class="btn btn-secondary " (click)="limpiarFiltros()">Limpiar</button>
+                            </div>
+                        </div>
+                        <div class="row mb-3 align-items-center">
+                            <div class="col-md-3 mb-2">
+                                <h6>Apellido Materno</h6>
+                                <input [(ngModel)]="apellidoMaternoBusqueda" type="text" class="form-control" placeholder="Búsqueda por apellido materno">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <h6>Especialidad</h6>
+                                <input [(ngModel)]="especialidadBusqueda" type="text" class="form-control" placeholder="Búsqueda por especialidad">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <button (click)="agregarVeterinario()" class="btn btn-primary ">Agregar Veterinario</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de Veterinarios -->
+                <div class="table-card card">
+                    <div class="table-responsive">
+                        <div class="header-container">
+                            <h1 class="title">Listado de Veterinarios</h1>
+                            <app-paginacion [totalItems]="totalItems" [itemsPerPage]="pageSize" [currentPage]="page" (pageChange)="page = $event; getVeterinarios()"></app-paginacion>
+                        </div>
+                        <table class="table-hover">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th>
+                                    <th>Especialidad</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo Electrónico</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let veterinario of veterinarios">
+                                    
+                                    <td>{{ veterinario.Nombre }}</td>
+                                    <td>{{ veterinario.ApellidoPaterno }}</td>
+                                    <td>{{ veterinario.ApellidoMaterno }}</td>
+                                    <td>{{ veterinario.Especialidad }}</td>
+                                    <td>{{ veterinario.Telefono }}</td>
+                                    <td>{{ veterinario.CorreoElectronico }}</td>
+                                    <td>
+                                        <button (click)="verPerfil(veterinario.VeterinarioID)" class="btn"><i class="fa-solid fa-eye"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

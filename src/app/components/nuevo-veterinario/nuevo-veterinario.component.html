@@ -1,0 +1,86 @@
+<div class="dialog-container">
+  <h2>Agregar Nuevo Veterinario</h2>
+  <div class="title-underline"></div>
+  <form [formGroup]="veterinarioForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-4 d-flex align-items-center justify-content-center flex-column">
+        <label for="fotoVeterinario" class="form-label foto-label">Agregar Foto</label>
+        <div class="foto-container">
+          <img [src]="fotoVeterinarioURL" class="img-fluid perfil-foto" alt="Foto del veterinario">
+        </div>
+        <input id="fotoVeterinario" type="file" (change)="onFileSelected($event, 'fotoVeterinario')" class="form-control-file">
+        <label for="fotoVeterinario" class="btn btn-upload">Subir Foto</label>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group" [ngClass]="{'has-error': veterinarioForm.get('Nombre')?.invalid && veterinarioForm.get('Nombre')?.touched}">
+          <label for="Nombre">Nombre <span class="text-danger">*</span></label>
+          <input id="Nombre" type="text" class="form-control" formControlName="Nombre">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': veterinarioForm.get('ApellidoPaterno')?.invalid && veterinarioForm.get('ApellidoPaterno')?.touched}">
+          <label for="ApellidoPaterno">Apellido Paterno <span class="text-danger">*</span></label>
+          <input id="ApellidoPaterno" type="text" class="form-control" formControlName="ApellidoPaterno">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': veterinarioForm.get('Telefono')?.invalid && veterinarioForm.get('Telefono')?.touched}">
+          <label for="Telefono">Teléfono <span class="text-danger">*</span></label>
+          <input id="Telefono" type="text" class="form-control" formControlName="Telefono">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': veterinarioForm.get('Especialidad')?.invalid && veterinarioForm.get('Especialidad')?.touched}">
+          <label for="Especialidad">Especialidad <span class="text-danger">*</span></label>
+          <select id="Especialidad" class="form-control" formControlName="Especialidad">
+            <option></option>
+            <option value="Medicina de Pequeños Animales">Medicina de Pequeños Animales</option>
+            <option value="Medicina de Grandes Animales">Medicina de Grandes Animales</option>
+            <option value="Medicina Equina">Medicina Equina</option>
+            <option value="Medicina de Animales Exóticos">Medicina de Animales Exóticos</option>
+            <option value="Medicina de Vida Silvestre">Medicina de Vida Silvestre</option>
+            <option value="Cirugía Veterinaria">Cirugía Veterinaria</option>
+            <option value="Dermatología Veterinaria">Dermatología Veterinaria</option>
+            <option value="Oncología Veterinaria">Oncología Veterinaria</option>
+            <option value="Odontología Veterinaria">Odontología Veterinaria</option>
+            <option value="Anestesiología Veterinaria">Anestesiología Veterinaria</option>
+            <option value="Patología Veterinaria">Patología Veterinaria</option>
+            <option value="Reproducción Animal">Reproducción Animal</option>
+            <option value="Medicina de Emergencia y Cuidados Intensivos">Medicina de Emergencia y Cuidados Intensivos</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group" [ngClass]="{'has-error': veterinarioForm.get('Usuario')?.invalid && veterinarioForm.get('Usuario')?.touched}">
+          <label for="Usuario">Usuario <span class="text-danger">*</span></label>
+          <input id="Usuario" type="text" class="form-control" formControlName="Usuario">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': veterinarioForm.get('ApellidoMaterno')?.invalid && veterinarioForm.get('ApellidoMaterno')?.touched}">
+          <label for="ApellidoMaterno">Apellido Materno <span class="text-danger">*</span></label>
+          <input id="ApellidoMaterno" type="text" class="form-control" formControlName="ApellidoMaterno">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': veterinarioForm.get('CorreoElectronico')?.invalid && veterinarioForm.get('CorreoElectronico')?.touched}">
+          <label for="CorreoElectronico">Correo Electrónico <span class="text-danger">*</span></label>
+          <input id="CorreoElectronico" type="email" class="form-control" formControlName="CorreoElectronico">
+        </div>
+        <div class="form-group" [ngClass]="{'has-error': veterinarioForm.get('DNI')?.invalid && veterinarioForm.get('DNI')?.touched}">
+          <label for="DNI">DNI <span class="text-danger">*</span></label>
+          <input id="DNI" type="text" class="form-control" formControlName="DNI">
+        </div>
+      </div>
+      <div class="col-md-12 d-flex justify-content-between">
+        <div class="form-group">
+          <label>Foto DNI</label>
+          <div class="input-group">
+            <input id="fotoDNI" type="file" (change)="onFileSelected($event, 'fotoDNI')" class="form-control">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Curriculum Vitae</label>
+          <div class="input-group">
+            <input id="curriculumVitae" type="file" (change)="onFileSelected($event, 'curriculumVitae')" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button type="submit" class="btn btn-primary">Guardar</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>

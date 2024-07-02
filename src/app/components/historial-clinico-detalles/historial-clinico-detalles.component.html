@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-md-2 col-lg-2 bg-light sidebar">
+      <app-menu></app-menu> 
+  </div>
+  <div class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
+      <div class="container">
+          <h1>Historial Clínico de {{ historial?.Mascota?.Nombre ?? 'No disponible' }}</h1>
+
+          <!-- Datos del Propietario -->
+          <table class="info-table">
+              <thead>
+                  <tr><th colspan="2">Datos del Propietario</th></tr>
+              </thead>
+              <tbody>
+                  <tr><td>Nombre:</td><td>{{ historial?.Mascota?.Propietario?.Nombre ?? 'No disponible' }}</td></tr>
+                  <tr><td>Dirección:</td><td>{{ historial?.Mascota?.Propietario?.Direccion ?? 'No disponible' }}</td></tr>
+                  <tr><td>Teléfono:</td><td>{{ historial?.Mascota?.Propietario?.Telefono ?? 'No disponible' }}</td></tr>
+                  <tr><td>Correo Electrónico:</td><td>{{ historial?.Mascota?.Propietario?.CorreoElectronico ?? 'No disponible' }}</td></tr>
+              </tbody>
+          </table>
+
+          <!-- Información de la Mascota -->
+          <table class="info-table">
+              <thead>
+                  <tr><th colspan="2">Información de la Mascota</th></tr>
+              </thead>
+              <tbody>
+                  <tr><td>Especie:</td><td>{{ historial?.Mascota?.Especie ?? 'No disponible' }}</td></tr>
+                  <tr><td>Raza:</td><td>{{ historial?.Mascota?.Raza ?? 'No disponible' }}</td></tr>
+                  <tr><td>Sexo:</td><td>{{ historial?.Mascota?.Sexo ?? 'No disponible' }}</td></tr>
+                  <tr><td>Fecha de Nacimiento:</td><td>{{ historial?.Mascota?.FechaNacimiento | date:'mediumDate' ?? 'No disponible' }}</td></tr>
+                  <tr><td>Color:</td><td>{{ historial?.Mascota?.Color ?? 'No disponible' }}</td></tr>
+                  <tr><td>Alergias:</td><td>{{ historial?.Mascota?.Alergias ?? 'No disponible' }}</td></tr>
+              </tbody>
+          </table>
+
+          <!-- Información Clínica -->
+          <table class="info-table">
+              <thead>
+                  <tr><th colspan="2">Información Clínica</th></tr>
+              </thead>
+              <tbody>
+                  <tr><td>Motivo de Consulta:</td><td>{{ historial?.MotivoConsulta ?? 'No disponible' }}</td></tr>
+                  <tr><td>Diagnóstico Presuntivo:</td><td>{{ historial?.DiagnosticoPresuntivo ?? 'No disponible' }}</td></tr>
+                  <tr><td>Plan Terapéutico:</td><td>{{ historial?.PlanTerapeutico ?? 'No disponible' }}</td></tr>
+                  <tr><td>Pronóstico:</td><td>{{ historial?.Pronostico ?? 'No disponible' }}</td></tr>
+                  <tr><td>Próximo Control:</td><td>{{ historial?.ProximoControl | date:'mediumDate' ?? 'No disponible' }}</td></tr>
+              </tbody>
+          </table>
+
+          <!-- Examen Físico -->
+          <table class="info-table">
+              <thead>
+                  <tr><th colspan="2">Examen Físico</th></tr>
+              </thead>
+              <tbody>
+                  <tr><td>Temperatura:</td><td>{{ historial?.Temperatura ?? 'No disponible' }} °C</td></tr>
+                  <tr><td>Frecuencia Cardiaca:</td><td>{{ historial?.FrecuenciaCardiaca ?? 'No disponible' }} l/min</td></tr>
+                  <tr><td>Frecuencia Respiratoria:</td><td>{{ historial?.FrecuenciaRespiratoria ?? 'No disponible' }} r/min</td></tr>
+                  <tr><td>Condición Corporal:</td><td>{{ historial?.CondicionCorporal ?? 'No disponible' }}</td></tr>
+              </tbody>
+          </table>
+
+          <!-- Información del Veterinario -->
+          <table class="info-table">
+              <thead>
+                  <tr><th colspan="2">Información del Veterinario</th></tr>
+              </thead>
+              <tbody>
+                  <tr><td>Nombre:</td><td>{{ historial?.Veterinario?.Nombre ?? 'No disponible' }}</td></tr>
+                  <tr><td>Especialidad:</td><td>{{ historial?.Veterinario?.Especialidad ?? 'No disponible' }}</td></tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

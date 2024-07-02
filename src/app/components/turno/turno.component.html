@@ -1,0 +1,64 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-lg-2 menu-column">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-md-10 col-lg-10 content-column">
+      <div class="content">
+        <!-- Formulario de Turno -->
+        <div class="filters-card card mb-4">
+          <div class="filters-header">
+            <h1 class="filters-title">Gestionar Turnos</h1>
+          </div>
+          <div class="filters-body">
+            <form [formGroup]="turnoForm" (ngSubmit)="createTurno()">
+              <div class="row mb-3">
+                <div class="col-md-4 mb-2">
+                  <label for="horario" class="form-label">Día</label>
+                  <select id="horario" formControlName="HorarioID" class="form-control" required>
+                    <option value="">Seleccionar</option>
+                    <option *ngFor="let horario of horarios" [value]="horario.HorarioID">{{ horario.Dia }}</option>
+                  </select>
+                </div>
+                <div class="col-md-4 mb-2">
+                  <label for="horaInicio" class="form-label">Hora Inicio</label>
+                  <input id="horaInicio" type="time" formControlName="HoraInicio" class="form-control" required>
+                </div>
+                <div class="col-md-4 mb-2">
+                  <label for="horaFin" class="form-label">Hora Fin</label>
+                  <input id="horaFin" type="time" formControlName="HoraFin" class="form-control" required>
+                </div>
+                <div class="col-md-4 mb-2">
+                  <label for="capacidad" class="form-label">Capacidad</label>
+                  <input id="capacidad" type="number" formControlName="Capacidad" class="form-control" required min="1">
+                </div>
+                <div class="col-md-4 mb-2 d-flex align-items-center justify-content-center">
+                  <button type="submit" class="btn btn-primary btn-height-adjusted" [disabled]="turnoForm.invalid">Crear Turno</button>
+                </div>
+                <div class="col-md-4 mb-2 d-flex align-items-center justify-content-center">
+                  <button type="button" class="btn btn-secondary btn-height-adjusted" (click)="limpiarCampos()">Limpiar Campos</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Turnos Existentes -->
+        <div class="table-card card">
+          <div class="table-responsive">
+            <h3 class="turnos-title">Turnos Existentes</h3>
+            <div class="calendario">
+              <div *ngFor="let day of diasSemana" class="day-column">
+                <h4 class="date-text">{{ capitalizeFirstLetter(day) }}</h4>
+                <div *ngFor="let turno of getTurnosPorDia(day)" class="turno">
+                  <p class="turno-hora">{{ formatHora(turno.HoraInicio) }} - {{ formatHora(turno.HoraFin) }}</p>
+                  <p class="turno-hora">Capacidad: {{ turno.Capacidad }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-lg-2 menu-column">
+            <app-menu></app-menu>
+        </div>
+        <div class="col-md-10 col-lg-10 content-column">
+            <div class="content">
+                <!-- Filtros de Búsqueda -->
+                <div class="filters-card card mb-4">
+                    <div class="filters-header">
+                        <h1 class="filters-title"> Gestión de Propietarios</h1>
+                    </div>
+                    <div class="filters-body">
+                        <div class="row mb-3 align-items-center">
+                            <div class="col-md-3 mb-2">
+                                <h6>Nombre</h6>
+                                <input [(ngModel)]="nombreBusqueda" type="text" class="form-control" placeholder="Búsqueda por nombre">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <h6>Segundo Nombre</h6>
+                                <input [(ngModel)]="segundoNombreBusqueda" type="text" class="form-control" placeholder="Búsqueda por segundo nombre">
+                            </div>
+                            <div class="col-md-3 ">
+                                <button class="btn  btn-primary " (click)="buscar()">Buscar</button>
+                            </div>
+                            <div class="col-md-3 ">
+                                <button class="btn  btn-secondary " (click)="limpiarFiltros()">Limpiar</button>
+                            </div>
+                        </div>
+                        <div class="row mb-3 align-items-center">
+                            <div class="col-md-3 mb-2">
+                                <h6>Apellido Paterno</h6>
+                                <input [(ngModel)]="apellidoPaternoBusqueda" type="text" class="form-control" placeholder="Búsqueda por apellido paterno">
+                            </div>
+                            <div class="col-md-3 mb-2">
+                                <h6>Apellido Materno</h6>
+                                <input [(ngModel)]="apellidoMaternoBusqueda" type="text" class="form-control" placeholder="Búsqueda por apellido materno">
+                            </div>
+                            <div class="col-md-3 ">
+                                <button (click)="agregarPropietario()" class="btn btn-primary ">Agregar Propietario</button>
+                            </div>
+                            <div class="col-md-3 estados">
+                                <div class="estado-container">
+                                  <span class="estado-color habilitados" ></span>
+                                  <p>Activos: {{ habilitados }}</p>
+                                </div>
+                                <div class="estado-container">
+                                    <span class="estado-color deshabilitados" ></span>
+                                    <p>Inactivos: {{ deshabilitados }}</p>
+                                  </div>
+                               
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Tabla de Propietarios -->
+                <div class="table-card card">   
+                    <div class="table-responsive">
+                        <div class="header-container">
+                            <h1 class="title">Listado de Propietarios</h1>
+                            <app-paginacion [totalItems]="totalItems" [itemsPerPage]="pageSize" [currentPage]="page" (pageChange)="page = $event; getPropietarios()"></app-paginacion>
+                        </div>
+                        
+                        <table class="table-hover">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>Nombre</th>
+                                    <th>Apellido Paterno</th>
+                                    <th>Apellido Materno</th>
+                                    <th>Dirección</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo Electrónico</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let propietario of propietarios">
+                                    
+                                    <td>{{ propietario.Nombre }} {{ propietario.SegundoNombre }}</td>
+                                    <td>{{ propietario.ApellidoPaterno }}</td>
+                                    <td>{{ propietario.ApellidoMaterno }}</td>
+                                    <td>{{ propietario.Direccion }}</td>
+                                    <td>{{ propietario.Telefono }}</td>
+                                    <td>{{ propietario.CorreoElectronico }}</td>
+                                    <td>
+                                        <button (click)="verPerfil(propietario.PropietarioID)" class="btn"><i class="fa-solid fa-eye"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

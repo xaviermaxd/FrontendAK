@@ -1,0 +1,61 @@
+.container {
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 470px;
+    
+    margin: 0 auto;
+}
+
+.title {
+    background-color:#e2f1fd;
+    color: #04a1bd;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.title-medi{
+    background-color:#e2f1fd;
+    color: #04a1bd;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.details {
+    font-size: 16px;
+}
+
+.subtitle {
+    color: #04a1bd;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.medications {
+    list-style: none;
+    padding: 0;
+}
+
+.medication {
+    margin-bottom: 10px;
+}
+
+.dose,
+.lot {
+    color: #04a1bd;
+    font-weight: bold;
+}
+hr {
+    border: none;
+    border-top:  4px dotted #027387; /* Línea punteada y color blanco */
+    margin: 5px 0; /* Espacio alrededor del hr */
+    
+  }
+  
+  .line {
+    width: 100%; /* Asegura que la línea ocupe todo el ancho disponible */
+    border: 0;
+    border-top: 4px dotted #04a1bd; /* Cambia el color y el grosor de la línea según tu preferencia */
+    margin: 5px 0; /* Espacio superior e inferior alrededor de la línea */
+  }
+

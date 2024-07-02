@@ -1,0 +1,96 @@
+/* General adjustments */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Ensure that the image covers the entire area */
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the space without distortion */
+  display: block;
+}
+
+/* Ensure the container takes up the entire viewport */
+.container-fluid {
+  height: 100vh; /* Occupies the full height of the viewport */
+}
+
+.row {
+  height: 100%; /* Ensures the row occupies the full height of the container */
+}
+
+.table-container {
+  height: 100%; /* Ensures the container occupies the remaining space */
+  padding: 0; /* Removes any padding */
+  margin: 0; /* Removes any margin */
+}
+
+/* Flexbox utilities */
+.d-flex {
+  display: flex !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.flex-grow-1 {
+  flex-grow: 1 !important;
+}
+
+/* Ajustes para la columna del menú */
+.menu-column {
+  width: 240px; /* Ancho del menú */
+  max-width: 240px; /* Establece un ancho máximo */
+}
+
+
+/* Ajustar el ancho del contenido para ocupar el espacio restante */
+@media (min-width: 992px) {
+  .content-column {
+    width: calc(100% - 240px); /* Restar el ancho del menú al 100% */
+  }
+}
+
+/* Ocultar scroll pero permitir desplazamiento en toda la ventana */
+body {
+  overflow: hidden; /* Ocultar el scroll visualmente */
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::before::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+.container-fluid {
+  height: 100vh; /* Asegurar que el contenedor ocupe toda la altura de la ventana */
+  overflow-y: auto; /* Permitir el desplazamiento dentro del contenedor */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+  background: #e2f1fd;
+}
+
+.container-fluid::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+
+
+
+
+

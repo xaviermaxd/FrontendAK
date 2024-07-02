@@ -1,0 +1,453 @@
+/* General Styles */
+body {
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::before::-webkit-scrollbar {
+  display: none;
+}
+
+.container-fluid {
+  height: 100vh;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background: #e2f1fd;
+}
+
+.container-fluid::-webkit-scrollbar {
+  display: none;
+}
+
+.row {
+  flex: 1;
+  display: flex;
+  padding: 10px;
+}
+
+.menu-column {
+  padding-right: 0;
+  width: 250px;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-column {
+    width: 80px;
+  }
+
+  .content-column {
+    margin-left: 80px;
+    margin-right: 0;
+    width: calc(100% - 80px);
+  }
+}
+
+.content-column {
+  padding-left: 0;
+}
+
+@media (min-width: 992px) {
+  .content-column {
+    width: calc(100% - 250px);
+  }
+}
+
+.seccion-principal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.perfil-usuario-body, .perfil-usuario-bio {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.perfil-usuario-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perfil-usuario-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.perfil-foto {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 0;
+  margin-bottom: 20px;
+}
+
+.info-datos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px 2px 30px;
+}
+
+.lista-datos {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.lista-datos li {
+  padding: 10px 0;
+  font-size: 1.1em;
+}
+
+.lista-datos li .icono {
+  margin-right: 10px;
+}
+
+.lista-datos li .label {
+  font-weight: bold;
+}
+
+.perfil-usuario-footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.perfil-usuario-footer .btn {
+  font-size: 0.9em;
+}
+
+.seccion-perfil-usuario.mascotas .card {
+  margin-bottom: 20px;
+  background: #f1f9ff;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.filters-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2px;
+  background: #e2f1fd;
+  padding: 0 10px 0 10px;
+  border-radius: 10px;
+}
+.filters-header-historial {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  background: #04a1bd;
+  padding: 0 10px 0 10px;
+  border-radius: 10px;
+}
+
+.filters-title {
+  text-transform: uppercase;
+  margin: 10px 0;
+  color: #027a90;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+.filters-title-filtro {
+  margin: 10px 0;
+  color: #027a90;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+.title {
+  font-size: 33px; /* Tamaño de fuente del título */
+ /* Negrita para el título */
+  color:#fff; /* Color del texto */
+
+  text-align: center;
+  margin-left: 10px;
+}
+
+.btn {
+  border-radius: 20px;
+  margin: 2px;
+  color: white !important;
+  width: 100%;
+  height: 50px;
+  line-height: 40px;
+}
+
+
+.btn-ver {
+  background-color: #7f8c8d; /* Color plomo */
+  border-radius: 20px; /* Redondeado */
+  border: none; /* Sin borde */
+  width: 100px; /* Ancho completo */
+  height: 35px;
+  text-align: center; /* Alinear texto al centro */
+  color: white
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center; /* Centra el botón */
+  width: 100%;
+}
+
+.titulo-seccion {
+  background-color: #04a1bd;
+  color: #fff;
+  text-align: center;
+}
+
+.btn-editar {
+  background-color: #2ecc71;
+}
+
+.btn-eliminar {
+  background-color: rgb(255, 58, 58);
+}
+
+.btn-agregar {
+  background-color: #04a1bd;
+}
+.btn-vacunacion{
+  background-color: #03859c;
+}
+.btn-consulta-medica{
+  background-color: #04a1bd;
+}
+.btn-filtro{
+  background-color: #04a1bd;
+}
+
+.btn i {
+  color: white;
+  margin-right: 3px;
+}
+
+.icono {
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+
+hr {
+  border: none;
+  border-top:  4px dotted #027387; /* Línea punteada y color blanco */
+  margin: 5px 0; /* Espacio alrededor del hr */
+  
+}
+
+.line {
+  width: 100%; /* Asegura que la línea ocupe todo el ancho disponible */
+  border: 0;
+  border-top: 4px dotted #04a1bd; /* Cambia el color y el grosor de la línea según tu preferencia */
+  margin: 5px 0; /* Espacio superior e inferior alrededor de la línea */
+}
+
+
+
+/* Prueba */
+.timeline-item .timeline-desk .timeline-box {
+  padding: 20px;
+}
+*{
+  outline: none !important;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+.timeline-desk {
+  display: table-cell;
+  vertical-align: top;
+  width: 50%;
+}
+.timeline-desk .panel {
+  background: #edf1f5;
+  display: block;
+  margin-bottom: 5px;
+  position: relative;
+  text-align: left;
+  border: 0;
+}
+.timeline-desk .panel.left {
+  margin-right: 45px;
+}
+.timeline-desk .panel.right {
+  margin-left: 45px;
+}
+
+.timeline-desk.left {
+  float: left;
+  clear: both;
+  margin-right: 20px;
+}
+
+.timeline-desk.right {
+  float: right;
+  clear: both;
+  margin-left: 20px;
+}
+.timeline {
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: table;
+  /* margin-bottom: 50px; */
+  position: relative;
+  table-layout: fixed;
+  width: 100%;
+}
+.timeline:before {
+  background-color: #b8d2e4;
+  bottom: 0;
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: 30px;
+  width: 2px;
+  z-index: 0;
+}
+@media (min-width: 768px){
+.col-md-9 {
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
+    max-width: 75%;
+}
+}
+
+.timeline .timeline-icon {
+  background: #04a1bd;
+  border-radius: 50%;
+  display: block;
+  height: 20px;
+  margin-top: -10px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 20px;
+}
+
+.timeline .timeline-desk.left .timeline-icon {
+  right: -55px;
+}
+
+.timeline .timeline-desk.right .timeline-icon {
+  left: -55px;
+}
+.timeline .timeline-icon i {
+  color: #ffffff;
+  font-size: 13px;
+  margin-top: 3px;
+  position: absolute;
+  left: 4px;
+}
+
+/* Estilo para el título y el icono del ojo */
+.timeline h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que el texto se ajuste en varias líneas */
+  margin-right: 15px;
+  color: #027a90; /* Cambia el color según sea necesario */
+  font-size: 1.6em; /* Ajusta el tamaño según sea necesario */
+  word-break: break-word; /* Permite que el título se adapte al tamaño de la pantalla */
+}
+
+.timeline h3 i {
+  cursor: pointer;
+  font-size: 19px; /* Ajusta el tamaño del icono según necesites */
+  margin-left: 10px; /* Espacio entre el título y el icono */
+  flex-shrink: 0; /* Asegura que el icono no se reduzca de tamaño */
+}
+
+.fa-eye {
+  color: #2ecc71;
+}
+
+/* Estilo para la fecha */
+.timeline .timeline-date {
+  display: block;
+  font-size: 14px; /* Ajusta el tamaño del icono según necesites */
+  color: #888888; /* Cambia el color según sea necesario */
+  margin-top: 5px; /* Espacio entre la fecha y el título */
+}
+
+/* Responsividad para adaptarse a pantallas pequeñas */
+@media (max-width: 768px) {
+  .timeline h3 {
+    font-size: 1em; /* Ajusta el tamaño del título para pantallas pequeñas */
+  }
+  .timeline p, .timeline span, .timeline .timeline-date {
+    font-size: 0.8em; /* Ajusta el tamaño de los demás textos para pantallas pequeñas */
+  }
+}
+
+
+.timeline-item .timeline-desk .arrow.left {
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid #edf1f5 !important;
+    border-top: 12px solid transparent;
+    display: block;
+    height: 0;
+    left: auto;
+    margin-top: -12px;
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    width: 0;
+}
+
+.timeline-item .timeline-desk .arrow.right {
+  left: -12px;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid #e9eff3 !important;
+  border-top: 12px solid transparent;
+  display: block;
+  height: 0;
+  margin-top: -12px;
+  position: absolute;
+  top: 50%;
+  width: 0;
+}
+
+
+
+
+
+
+
+

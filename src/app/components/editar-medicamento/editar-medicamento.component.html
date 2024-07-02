@@ -1,0 +1,160 @@
+<div class="dialog-container">
+  <h2>Editar Medicamento</h2>
+  <div class="title-underline"></div>
+  <form [formGroup]="medicamentoForm" (ngSubmit)="submit()" class="dialog-form">
+    <div class="row">
+      <div class="col-md-6 d-flex flex-column">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" type="text" formControlName="nombre" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="laboratorio_id">Laboratorio</label>
+          <select id="laboratorio_id" formControlName="laboratorio_id" class="form-control" required>
+            <option *ngFor="let laboratorio of laboratorios" [value]="laboratorio.id">{{ laboratorio.nombre }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="sustancia_id">Sustancia Activa</label>
+          <select id="sustancia_id" formControlName="sustancia_id" class="form-control" required>
+            <option *ngFor="let sustancia of sustanciasActivas" [value]="sustancia.id">{{ sustancia.nombre }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex flex-column">
+        <div class="form-group">
+          <label for="pais_id">País</label>
+          <select id="pais_id" formControlName="pais_id" class="form-control">
+            <option *ngFor="let pais of paises" [value]="pais.id">{{ pais.nombre }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="registro_sanitario">Registro Sanitario</label>
+          <input id="registro_sanitario" type="text" formControlName="registro_sanitario" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="uso_terapeutico_id">Uso Terapéutico</label>
+          <select id="uso_terapeutico_id" formControlName="uso_terapeutico_id" class="form-control" required>
+            <option *ngFor="let uso of usosTerapeuticos" [value]="uso.id">{{ uso.nombre }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 d-flex flex-column">
+        <div class="form-group">
+          <label for="composicion">Composición</label>
+          <textarea id="composicion" formControlName="composicion" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="indicaciones">Indicaciones</label>
+          <textarea id="indicaciones" formControlName="indicaciones" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="contraindicaciones">Contraindicaciones</label>
+          <textarea id="contraindicaciones" formControlName="contraindicaciones" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex flex-column">
+        <div class="form-group">
+          <label for="precauciones">Precauciones</label>
+          <textarea id="precauciones" formControlName="precauciones" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="reacciones_adversas">Reacciones Adversas</label>
+          <textarea id="reacciones_adversas" formControlName="reacciones_adversas" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="via_administracion_id">Vía de Administración</label>
+          <select id="via_administracion_id" formControlName="via_administracion_id" class="form-control" required>
+            <option *ngFor="let via of viasAdministracion" [value]="via.id">{{ via.nombre }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 d-flex flex-column">
+        <div class="form-group">
+          <label for="foto">Foto</label>
+          <input id="foto" type="file" (change)="onFileChange($event, 'foto')" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="url">URL</label>
+          <input id="url" type="text" formControlName="url" class="form-control">
+        </div>
+      </div>
+      <div class="col-md-6 d-flex flex-column">
+        <div class="form-group">
+          <label for="documento">Documento</label>
+          <input id="documento" type="file" (change)="onFileChange($event, 'documento')" class="form-control">
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h3>Posología por Especies</h3>
+    <div formArrayName="posologias">
+      <div *ngFor="let posologia of posologias.controls; let i = index" [formGroupName]="i" class="form-group">
+        <div class="row">
+          <div class="col-md-4 d-flex flex-column">
+            <div class="form-group">
+              <label for="especie_id">Especie</label>
+              <select id="especie_id" formControlName="especie_id" class="form-control" required>
+                <option *ngFor="let especie of especies" [value]="especie.id">{{ especie.nombre }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-8 d-flex flex-column">
+            <div class="form-group">
+              <label for="dosificacion">Dosificación</label>
+              <input id="dosificacion" type="text" formControlName="dosificacion" class="form-control" required>
+            </div>
+            <div class="btn-acciones d-md-flex justify-content-md-end">
+              <button type="button" (click)="removePosologia(i)" class="btn btn-danger" *ngIf="posologias.length > 1">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-acciones d-md-flex justify-content-md-end">
+      <button type="button" (click)="addPosologia()" class="btn btn-primary">Agregar Especie</button>
+    </div>
+    <hr>
+    <h3>Presentaciones</h3>
+    <div formArrayName="presentaciones">
+      <div *ngFor="let presentacion of presentacionesArray.controls; let i = index" [formGroupName]="i" class="form-group">
+        <div class="row">
+          <div class="col-md-6 d-flex flex-column">
+            <div class="form-group">
+              <label for="presentacion_id">Presentación</label>
+              <select id="presentacion_id" formControlName="presentacion_id" class="form-control" required>
+                <option *ngFor="let presentacion of presentaciones" [value]="presentacion.id">{{ presentacion.nombre }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2 d-flex flex-column">
+            <div class="form-group">
+              <label for="unidades">Unidades</label>
+              <input id="unidades" type="number" formControlName="unidades" class="form-control" required>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex flex-column">
+            <div class="form-group">
+              <label for="concentracion">Concentración</label>
+              <input id="concentracion" type="text" formControlName="concentracion" class="form-control" required>
+            </div>
+            <div class="btn-acciones d-md-flex justify-content-md-end">
+              <button type="button" (click)="removePresentacion(i)" class="btn btn-danger" *ngIf="presentacionesArray.length > 1">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-acciones d-md-flex justify-content-md-end">
+      <button type="button" (click)="addPresentacion()" class="btn btn-primary">Agregar Presentación</button>
+    </div>
+    <div class="btn-container">
+      <button type="submit" class="btn btn-secondary">Guardar</button>
+      <button type="button" class="btn btn-remove" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+</div>

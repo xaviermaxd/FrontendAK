@@ -1,0 +1,36 @@
+<div class="auth-wrapper">
+  <div class="auth-content">
+    <div class="card">
+      <div class="row align-items-center">
+        <!-- Imagen a la izquierda del formulario -->
+        <div class="col-md-7 auth-side-img">
+          <img src="assets/login/Logi.jpeg" alt="Imagen Lateral" class="img-fluid"/>
+        </div>
+        <div class="col-md-5 auth-side-form">
+          <div class="card-body">
+            <div class="text-center">
+              <img src="assets/login/logo.png" alt="logo" class="img-fluid mb-4" />
+              <h4 class="mb-3 f-w-400">Iniciar Sesión</h4>
+            </div>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                <input type="text" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1" id="usuario" formControlName="usuario"/>
+              </div>
+              <div class="input-group mb-4">
+                <span class="input-group-text" id="basic-addon3"><i class="fa-solid fa-user"></i></span>
+                <input type="password" class="form-control" placeholder="Contraseña" aria-label="Username" aria-describedby="basic-addon3" id="contrasena" formControlName="contrasena"/>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-outline-primary">Iniciar Sesión</button>
+              </div>
+            </form>
+            <div class="text-center mt-3">
+              <p class="text-muted"><a href="#">Olvidaste tu contraseña?</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

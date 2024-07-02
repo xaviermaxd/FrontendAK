@@ -1,0 +1,148 @@
+/* Estilos para el contenedor del diálogo */
+.dialog-container {
+  padding: 20px;
+  max-height: 80vh; /* Establece la altura máxima en el 80% del tamaño de la ventana */
+  overflow-y: auto; /* Habilita el desplazamiento vertical cuando el contenido excede la altura máxima */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Oculta la barra de desplazamiento en navegadores WebKit (Chrome, Safari) */
+.dialog-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilos para ocultar el scroll horizontal en el body */
+body {
+  overflow-x: hidden; /* Oculta el scroll horizontal */
+}
+
+/* Estilos adicionales */
+h2 {
+  text-align: center;
+  color: #04abd5;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 5px;
+  background-color: #e2f1fd;
+  color: #0385a5;
+}
+
+.title-underline {
+  width: 100%;
+  height: 4px;
+  background-color: #04abd5;
+  margin: 10px 0 20px 0;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label,
+.foto-label {
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.foto-label {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.form-control.is-invalid {
+  border-color: #e3342f;
+}
+
+.invalid-feedback {
+  color: #e3342f;
+  display: block;
+  font-size: 0.875em;
+  margin-top: 0.25rem;
+}
+
+.required {
+  color: red;
+}
+
+.form-control-file {
+  display: none;
+}
+
+.foto-container {
+  margin-bottom: 10px;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+.btn-guardar,
+.btn-cancelar {
+  width: 150px;
+  padding: 10px 0;
+  font-size: 1.1rem;
+}
+
+.btn-primary {
+  margin: 10px;
+  background-color: #2ecc71;
+  border-color: #25a85b;
+  color: #fff;
+}
+
+.btn-guardar {
+  margin: 10px;
+  background-color: #0385a5;
+  border-color: #0385a5;
+  color: #fff;
+}
+
+.btn-cancelar {
+  margin: 10px;
+  background-color: #ff2121;
+  border-color: #c80505;
+  color: #fff;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-4 {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.flex-column {
+  flex-direction: column;
+}

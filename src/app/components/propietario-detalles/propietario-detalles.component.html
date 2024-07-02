@@ -1,0 +1,85 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-lg-2 menu-column">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-md-10 col-lg-10 content-column">
+      <div class="row">
+        <div class="col-md-4 col-lg-4">
+          <section class="seccion-perfil-usuario">
+            <div class="perfil-usuario-body"> 
+              <hr class="line">
+              <div class="filters-header">
+                <h1 class="filters-title">{{ propietario.Nombre }} {{ propietario.SegundoNombre }} {{ propietario.ApellidoPaterno }} {{ propietario.ApellidoMaterno }}</h1>
+              </div>
+              <hr class="line"> 
+              <div class="perfil-usuario-header">
+                <img [src]="'http://localhost:3000/akfotos/' + (propietario.Foto || 'default.png')" alt="Foto del propietario" class="img-fluid perfil-foto">
+              </div>
+              <div class="info-datos">
+                <ul class="lista-datos">
+                  <li><img class="icono" src="/assets/login/gmail.png"> {{ propietario.CorreoElectronico }}</li>
+                  <li><img class="icono" src="/assets/login/mapa.png" > {{ propietario.Direccion }}</li>
+                  <li><img class="icono" src="/assets/login/llamada.png"> {{ propietario.Telefono }}</li>
+                  <li><img class="icono" src="/assets/login/licencia-de-conducir.png"> <span class="label">DNI:</span> {{ propietario.DNI }}</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <div class="col text-center mt-2">
+            <button mat-raised-button color="primary" (click)="openDialog()" class="btn btn-agregar"><i class="fa-solid fa-plus"></i> Agregar Mascota</button>
+          </div>
+          <div class="col text-center mt-2">
+            <button (click)="editarPropietario(propietario)" class="btn btn-large btn-editar"><i class="fa-solid fa-pen"></i> Editar</button>
+          </div>
+          <div class="col text-center mt-2">
+            <button (click)="deletePropietario(propietario.PropietarioID)" class="btn btn-eliminar"><i class="fa-solid fa-trash-can"></i> Eliminar</button>
+          </div>
+        </div>
+        <div class="col-md-8 col-lg-8">
+          <section class="seccion-perfil-usuario mascotas">
+            <div class="perfil-usuario-bio">
+              <div class="header-container">
+                <h1 class="title">Mascotas</h1>
+                <app-paginacion [totalItems]="totalItems" [itemsPerPage]="pageSize" [currentPage]="page" (pageChange)="page = $event; getMascotas()"></app-paginacion>
+             </div>
+              <div class="row">
+                <div class="col-md-6" *ngFor="let mascota of mascotas">
+                  <div class="card shadow-sm">
+                    <div class="card-img-container">
+                      <img class="card-img-top" [src]="'http://localhost:3000/akfotos/' + (mascota.Foto || 'default.png')" alt="Foto de la mascota">
+                    </div>
+                    <div class="card-body">
+                      <hr>
+                      <h5 class="card-title">{{ mascota.Nombre | uppercase }}</h5>
+                      <hr>
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <p class="card-text"><img class="icono" src="/assets/login/huellaa.png"><strong>Raza:</strong> {{ mascota.Raza }}</p>
+                            <p class="card-text"><img class="icono" src="/assets/login/genero.png"><strong>Sexo:</strong> {{ mascota.Sexo }}</p>
+                            <p class="card-text"><img class="icono" src="/assets/login/huella.png"><strong>Edad:</strong> {{ calcularEdad(mascota.FechaNacimiento) }}</p>
+                          </div>
+                          <div class="col-md-6">
+                            <p class="card-text"><img class="icono" src="/assets/login/cuidado-de-mascotas.png"><strong>Especie:</strong>{{ mascota.Especie }}</p>
+                            <div class="col text-center mt-2">
+                              <button type="button" class="btn-ver" (click)="verPerfilMascota(mascota.MascotaID)"><i class="fa-solid fa-eye"></i> Ver</button>
+                            </div>
+                          </div>
+                        </div>
+        
+                      </div>
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

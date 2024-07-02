@@ -1,0 +1,156 @@
+<div class="dialog-container">
+  <h2>Agregar Nuevo Medicamento</h2>
+  <div class="title-underline"></div>
+  <form [formGroup]="medicamentoForm" (ngSubmit)="submit()">
+    <div class="row">
+      <div class="col-md-4 d-flex flex-column">
+        <!-- <div class="foto-container">
+          <img [src]="fotoURL" class="img-fluid perfil-foto" alt="Foto del medicamento">
+        </div> -->
+        <div class="form-group">
+          <label for="foto">Foto</label>
+          <input id="foto" type="file" (change)="onFileChange($event, 'foto')" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="documento">Documento</label>
+          <input id="documento" type="file" (change)="onFileChange($event, 'documento')" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="url">URL</label>
+          <input id="url" type="text" formControlName="url" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="composicion">Composición</label>
+          <textarea id="composicion" formControlName="composicion" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="indicaciones">Indicaciones</label>
+          <textarea id="indicaciones" formControlName="indicaciones" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="contraindicaciones">Contraindicaciones</label>
+          <textarea id="contraindicaciones" formControlName="contraindicaciones" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="precauciones">Precauciones</label>
+          <textarea id="precauciones" formControlName="precauciones" class="form-control"></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="nombre">Nombre <span class="required">*</span></label>
+          <input id="nombre" type="text" formControlName="nombre" class="form-control" [ngClass]="{'is-invalid': medicamentoForm.get('nombre')?.invalid && (medicamentoForm.get('nombre')?.touched || medicamentoForm.get('nombre')?.dirty)}">
+          <div *ngIf="medicamentoForm.get('nombre')?.invalid && (medicamentoForm.get('nombre')?.touched || medicamentoForm.get('nombre')?.dirty)" class="invalid-feedback">
+            Nombre es requerido.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="laboratorio_id">Laboratorio <span class="required">*</span></label>
+          <select id="laboratorio_id" formControlName="laboratorio_id" class="form-control" [ngClass]="{'is-invalid': medicamentoForm.get('laboratorio_id')?.invalid && (medicamentoForm.get('laboratorio_id')?.touched || medicamentoForm.get('laboratorio_id')?.dirty)}">
+            <option *ngFor="let laboratorio of laboratorios" [value]="laboratorio.id">{{ laboratorio.nombre }}</option>
+          </select>
+          <div *ngIf="medicamentoForm.get('laboratorio_id')?.invalid && (medicamentoForm.get('laboratorio_id')?.touched || medicamentoForm.get('laboratorio_id')?.dirty)" class="invalid-feedback">
+            Laboratorio es requerido.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="pais_id">País</label>
+          <select id="pais_id" formControlName="pais_id" class="form-control">
+            <option *ngFor="let pais of paises" [value]="pais.id">{{ pais.nombre }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="registro_sanitario">Registro Sanitario</label>
+          <input id="registro_sanitario" type="text" formControlName="registro_sanitario" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="sustancia_id">Sustancia Activa <span class="required">*</span></label>
+          <select id="sustancia_id" formControlName="sustancia_id" class="form-control" [ngClass]="{'is-invalid': medicamentoForm.get('sustancia_id')?.invalid && (medicamentoForm.get('sustancia_id')?.touched || medicamentoForm.get('sustancia_id')?.dirty)}">
+            <option *ngFor="let sustancia of sustanciasActivas" [value]="sustancia.id">{{ sustancia.nombre }}</option>
+          </select>
+          <div *ngIf="medicamentoForm.get('sustancia_id')?.invalid && (medicamentoForm.get('sustancia_id')?.touched || medicamentoForm.get('sustancia_id')?.dirty)" class="invalid-feedback">
+            Sustancia Activa es requerida.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="uso_terapeutico_id">Uso Terapéutico <span class="required">*</span></label>
+          <select id="uso_terapeutico_id" formControlName="uso_terapeutico_id" class="form-control" [ngClass]="{'is-invalid': medicamentoForm.get('uso_terapeutico_id')?.invalid && (medicamentoForm.get('uso_terapeutico_id')?.touched || medicamentoForm.get('uso_terapeutico_id')?.dirty)}">
+            <option *ngFor="let uso of usosTerapeuticos" [value]="uso.id">{{ uso.nombre }}</option>
+          </select>
+          <div *ngIf="medicamentoForm.get('uso_terapeutico_id')?.invalid && (medicamentoForm.get('uso_terapeutico_id')?.touched || medicamentoForm.get('uso_terapeutico_id')?.dirty)" class="invalid-feedback">
+            Uso Terapéutico es requerido.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="via_administracion_id">Vía de Administración <span class="required">*</span></label>
+          <select id="via_administracion_id" formControlName="via_administracion_id" class="form-control" [ngClass]="{'is-invalid': medicamentoForm.get('via_administracion_id')?.invalid && (medicamentoForm.get('via_administracion_id')?.touched || medicamentoForm.get('via_administracion_id')?.dirty)}">
+            <option *ngFor="let via of viasAdministracion" [value]="via.id">{{ via.nombre }}</option>
+          </select>
+          <div *ngIf="medicamentoForm.get('via_administracion_id')?.invalid && (medicamentoForm.get('via_administracion_id')?.touched || medicamentoForm.get('via_administracion_id')?.dirty)" class="invalid-feedback">
+            Vía de Administración es requerida.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="reacciones_adversas">Reacciones Adversas</label>
+          <textarea id="reacciones_adversas" formControlName="reacciones_adversas" class="form-control"></textarea>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <h3>Posología por Especies</h3>
+        <div formArrayName="posologias">
+          <div *ngFor="let posologia of posologias.controls; let i = index" [formGroupName]="i" class="form-group">
+            <label for="especie_id">Especie <span class="required">*</span></label>
+            <select id="especie_id" formControlName="especie_id" class="form-control" [ngClass]="{'is-invalid': posologia.get('especie_id')?.invalid && (posologia.get('especie_id')?.touched || posologia.get('especie_id')?.dirty)}">
+              <option *ngFor="let especie of especies" [value]="especie.id">{{ especie.nombre }}</option>
+            </select>
+            <div *ngIf="posologia.get('especie_id')?.invalid && (posologia.get('especie_id')?.touched || posologia.get('especie_id')?.dirty)" class="invalid-feedback">
+              Especie es requerida.
+            </div>
+            <label for="dosificacion">Dosificación <span class="required">*</span></label>
+            <input id="dosificacion" type="text" formControlName="dosificacion" class="form-control" [ngClass]="{'is-invalid': posologia.get('dosificacion')?.invalid && (posologia.get('dosificacion')?.touched || posologia.get('dosificacion')?.dirty)}">
+            <div *ngIf="posologia.get('dosificacion')?.invalid && (posologia.get('dosificacion')?.touched || posologia.get('dosificacion')?.dirty)" class="invalid-feedback">
+              Dosificación es requerida.
+            </div>
+            <button type="button" (click)="removePosologia(i)" class="btn btn-danger" *ngIf="posologias.length > 1">Eliminar</button>
+          </div>
+        </div>
+        <div class="btn-container">
+          <button type="button" (click)="addPosologia()" class="btn btn-primary">Agregar Especie</button>
+        </div>
+
+        <h3>Presentaciones</h3>
+        <div formArrayName="presentaciones">
+          <div *ngFor="let presentacion of presentacionesArray.controls; let i = index" [formGroupName]="i" class="form-group">
+            <label for="presentacion_id">Presentación <span class="required">*</span></label>
+            <select id="presentacion_id" formControlName="presentacion_id" class="form-control" [ngClass]="{'is-invalid': presentacion.get('presentacion_id')?.invalid && (presentacion.get('presentacion_id')?.touched || presentacion.get('presentacion_id')?.dirty)}">
+              <option *ngFor="let presentacion of presentaciones" [value]="presentacion.id">{{ presentacion.nombre }}</option>
+            </select>
+            <div *ngIf="presentacion.get('presentacion_id')?.invalid && (presentacion.get('presentacion_id')?.touched || presentacion.get('presentacion_id')?.dirty)" class="invalid-feedback">
+              Presentación es requerida.
+            </div>
+            <label for="unidades">Unidades <span class="required">*</span></label>
+            <input id="unidades" type="number" formControlName="unidades" class="form-control" [ngClass]="{'is-invalid': presentacion.get('unidades')?.invalid && (presentacion.get('unidades')?.touched || presentacion.get('unidades')?.dirty)}">
+            <div *ngIf="presentacion.get('unidades')?.invalid && (presentacion.get('unidades')?.touched || presentacion.get('unidades')?.dirty)" class="invalid-feedback">
+              Unidades es requerido.
+            </div>
+            <label for="concentracion">Concentración <span class="required">*</span></label>
+            <input id="concentracion" type="text" formControlName="concentracion" class="form-control" [ngClass]="{'is-invalid': presentacion.get('concentracion')?.invalid && (presentacion.get('concentracion')?.touched || presentacion.get('concentracion')?.dirty)}">
+            <div *ngIf="presentacion.get('concentracion')?.invalid && (presentacion.get('concentracion')?.touched || presentacion.get('concentracion')?.dirty)" class="invalid-feedback">
+              Concentración es requerida.
+            </div>
+            <button type="button" (click)="removePresentacion(i)" class="btn btn-danger" *ngIf="presentacionesArray.length > 1">Eliminar</button>
+          </div>
+        </div>
+        <div class="btn-container">
+          <button type="button" (click)="addPresentacion()" class="btn btn-primary">Agregar Presentación</button>
+        </div>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button type="submit" class="btn btn-guardar">Guardar</button>
+      <button type="button" class="btn btn-cancelar" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+</div>

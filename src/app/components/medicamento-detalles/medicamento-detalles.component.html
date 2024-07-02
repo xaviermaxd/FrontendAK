@@ -1,0 +1,136 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 col-lg-2 menu-column">
+      <app-menu></app-menu>
+    </div>
+    <div class="col-md-10 col-lg-10 content-column">
+      <div class="row">
+        <div class="col-md-3 col-lg-3">
+          <section class="seccion-perfil-usuario"> 
+            <div class="perfil-usuario-body">
+              <hr class="line"> 
+              <div class="filters-header">
+                <h1 class="filters-title"> {{ medicamento.nombre }}</h1>
+              </div>
+              <hr class="line"> 
+              <div class="perfil-usuario-header">
+                <img [src]="'http://localhost:3000/akfotos/' + (medicamento.foto || 'default.png')" alt="Foto del medicamento" class="img-fluid perfil-foto">
+              </div>
+              <div class="archivo-visualizacion" *ngIf="archivoActual">
+                <img *ngIf="tipoArchivoActual === 'foto'" [src]="archivoActual" alt="Foto del Medicamento" class="img-fluid">
+                <iframe *ngIf="tipoArchivoActual === 'documento'" [src]="archivoActual" width="100%" height="500px"></iframe>
+              </div>
+              <div class="info-datos">
+                <ul class="lista-datos">
+                  <li><img class="icono" src="/assets/login/experimentar.png"> {{ medicamento.Laboratorio?.nombre }}</li>
+                  <li><img class="icono" src="/assets/login/pais.png"> {{ medicamento.Pais?.nombre }}</li>
+                  <li><img class="icono" src="/assets/login/vaccine-record.png">  <span class="label">Registro Sanitario:</span> {{ medicamento.registro_sanitario }}</li>
+                  <li><img class="icono" src="/assets/login/url.png"><a [href]="medicamento.url" target="_blank">{{ medicamento.url }}</a></li>
+                  <li><img class="icono" src="/assets/login/aceptacion.png"><span class="label">Archivo: </span>  <a [href]="'http://localhost:3000/akfotos/' + medicamento.documento" target="_blank">{{ medicamento.documento }}</a></li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <div class="col text-center mt-2">
+            <button (click)="editarMedicamento(medicamento)" class="btn btn-editar">
+              <i class="fa-solid fa-pen"></i> Editar
+            </button>
+          </div>
+          <button (click)="eliminarMedicamento()" class="btn btn-danger">
+            <i class="fa-solid fa-trash"></i> Eliminar
+          </button>
+        
+        </div>
+        <div class="col-md-9 col-lg-9">
+          <div class="perfil-usuario-bio">
+            <table class="table table-bordered">
+              <tbody>
+                <tr >
+                  <th class="title" colspan="4" scope="row">Información del Medicamento</th>
+                </tr>
+                <tr>
+                  <th colspan="1" scope="row">Posología por Especie</th>
+                  <td colspan="3">
+                    <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <th scope="row">Especie</th>
+                          <th scope="row">Posología</th>
+                        </tr>
+                        <tr *ngFor="let posologia of posologias">
+                          <th>{{ posologia.Especie?.nombre }}</th>
+                          <!-- <th><img style="background:#009688;padding: 10px;width: 65px;margin-right: 5px;" class="card-img-top img-fluid rounded-circle" src="/assets/login/huellaa.png" alt="Canino"></th> -->
+                          <td>{{ posologia.dosificacion }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Uso Terapéutico</th>
+                  <td> {{ medicamento.UsoTerapeutico?.nombre }} </td>
+                  <th scope="row">Presentación</th>
+                  <td>
+                    <li *ngFor="let presentacion of presentaciones"> {{ presentacion.unidades }} {{ presentacion.Presentacion?.nombre }} {{ presentacion.concentracion }}</li>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">Vía de Administración</th>
+                  <td>
+                    <li>
+                      {{ medicamento.ViaAdministracion?.nombre }}
+                    </li>
+                  </td>
+                  <th scope="row">Sustancia Activa:</th>
+                  <td> {{ medicamento.SustanciaActiva?.nombre }}</td>
+                </tr>
+                <tr>
+                  <th colspan="1" scope="row">
+                    Composición
+                  </th>
+                  <td colspan="3">
+                    {{ medicamento.composicion }}
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="1" scope="row">
+                    Indicaciones
+                  </th>
+                  <td colspan="3">
+                    {{ medicamento.indicaciones }}
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="1" scope="row">
+                    Contraindicaciones
+                  </th>
+                  <td colspan="3">
+                    {{ medicamento.contraindicaciones }}
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="1" scope="row">
+                    Precauciones
+                  </th>
+                  <td colspan="3">
+                    {{ medicamento.precauciones }}
+                  </td>
+                </tr>
+                <tr>
+                  <th colspan="1" scope="row">
+                    Reacciones Adversas
+                  </th>
+                  <td colspan="3">
+                    {{ medicamento.reacciones_adversas }}
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+          </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

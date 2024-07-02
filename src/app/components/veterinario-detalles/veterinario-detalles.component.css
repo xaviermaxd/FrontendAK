@@ -1,0 +1,131 @@
+/* Copiar los estilos necesarios del componente propietarioDetalles */
+.container-fluid {
+    height: 100vh;
+    overflow-y: auto;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    background: #e2f1fd;
+  }
+  
+  .container-fluid::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
+  
+  .menu-column {
+    padding-right: 0;
+  }
+  
+  
+  .content {
+    padding: 1px;
+  }
+  
+  .seccion-perfil-usuario {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .filters-header {
+    background-color: #04abd5;  /* Color de fondo azul */
+    color: white;  /* Texto en color blanco */
+    padding: 10px;
+    width: 100%;  /* Ocupa todo el ancho */
+    border-radius: 5px 5px 0 0;  /* Borde superior redondeado */
+  }
+  
+  .filters-title {
+    font-size: 2rem;  /* Tamaño aumentado */
+    margin: 0;
+  }
+  
+  .perfil-usuario-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 3px;  /* Reduce el espacio entre los divs */
+  }
+  
+  .perfil-usuario-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;  /* Ocupa todo el ancho */
+  }
+  
+  .perfil-foto {
+    width: 175px;  /* Aumenta ligeramente el tamaño de la imagen */
+    height: 175px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #04abd5;  /* Borde más grueso */
+    margin-right: 20px;
+  }
+  
+  .info-datos {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .lista-datos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+  }
+  
+  .lista-datos li {
+    padding: 10px 0;
+    font-size: 1.1em;
+  }
+  
+  .lista-datos li .icono {
+    margin-right: 10px;
+  }
+  
+  .lista-datos li .label {
+    font-weight: bold;
+  }
+  
+  .perfil-usuario-footer {
+    display: flex;
+    justify-content: flex-start;  /* Ajusta la alineación de los botones */
+    width: 100%;  /* Asegura que los botones ocupen todo el ancho */
+    gap: 10px;  /* Añade espacio entre los botones */
+    margin-top: 10px;  /* Añadir margen superior para los botones adicionales */
+  }
+  
+  .perfil-usuario-footer .btn {
+    width: auto;  /* Ajusta el ancho de los botones */
+  }
+  
+  .btn-eliminar {
+    background-color: red;
+    color: #fff;
+  }
+  
+  .btn-editar {
+    background-color: #039db8;
+    color: #fff;
+  }
+  
+  .btn-ver {
+    background-color: #04abd5;
+    color: #fff;
+  }
+  
+  .seccion-perfil-usuario .archivo-visualizacion {
+    margin-top: 20px;
+  }
+  
+  iframe {
+    border: none;
+  }
+  
+
+  

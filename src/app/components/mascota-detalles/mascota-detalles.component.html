@@ -1,0 +1,140 @@
+<!-- mascota-detalles.component.html -->
+<div class="container-fluid">
+    <div class="row">
+      <!-- Menú en la parte izquierda -->
+      <div class="col-md-2 col-lg-2 menu-column">
+        <app-menu></app-menu> <!-- Selector del componente de menú -->
+      </div>
+      <div class="col-md-10 col-lg-10 content-column">
+        <div class="row">
+          <div class="col-md-4 col-lg-4" *ngIf="mascota">
+            <section class="seccion-perfil-usuario">
+              <div class="perfil-usuario-body"> 
+                <hr class="line">
+                <div class="filters-header">
+                  <h1 class="filters-title">{{ mascota.Nombre }}</h1>
+                </div>
+                <hr class="line"> 
+                <div class="perfil-usuario-header">
+                  <img class="card-img-top" [src]="'http://localhost:3000/akfotos/' + (mascota.Foto || 'default.png')" alt="Foto de la mascota">
+                </div>
+                <div class="info-datos">
+                  <ul class="lista-datos">
+                    <li><img class="icono" src="/assets/login/cuidado-de-mascotas.png"> Especie: {{ mascota.Especie }}</li>
+                    <li><img class="icono" src="/assets/login/huellaa.png">Raza: {{ mascota.Raza }}</li>
+                    <li><img class="icono" src="/assets/login/genero.png"> {{ mascota.Sexo }}</li>
+                    <li><img class="icono" src="/assets/login/calendario.png">Fecha de Nacimiento: {{ mascota.FechaNacimiento }}</li>
+                    <li><img class="icono" src="/assets/login/paleta-de-color.png"> {{ mascota.Color }}</li>
+                    <li><img class="icono" src="/assets/login/sin-mascotas.png">Alergias: {{ mascota.Alergias }}</li>
+                  </ul>
+                </div>
+                <hr class="line">
+                <div class="filters-header">
+                  <h1 class="filters-title">Propietario</h1>
+                </div>
+                <hr class="line">
+                <div class="info-datos">
+                  <div class="lista-datos">
+                    <li><i class="icono fa-solid fa-user"></i>Nombre: {{ mascota.Propietario.Nombre }} {{ mascota.Propietario.ApellidoPaterno }}</li>
+                    <li><img class="icono" src="/assets/login/llamada.png"> {{ mascota.Propietario.Telefono }}</li>
+                  </div>
+                </div>
+                
+              </div>
+            </section>
+            <div class="col text-center mt-2">
+              <button (click)="editarMascota()" class="btn btn-editar"><i class="fa-solid fa-pen"></i>Editar</button>
+            </div>
+            <div class="col text-center mt-2">
+              <button (click)="eliminarMascota()" class="btn btn-eliminar"><i class="fa-solid fa-trash-can"></i>Eliminar</button>
+            </div>
+            <div class="col text-center mt-2">
+              <button (click)="abrirFormularioVacunacion()" class="btn btn-vacunacion"><i class="fa-solid fa-syringe"></i> Nueva Vacunación</button>
+            </div>
+            <div class="col text-center mt-2">
+              <button (click)="openNuevoDesparasitacion()" class="btn btn-secondary">Registrar Desparasitación</button>
+            </div>
+            <div class="col text-center mt-2">
+              <button (click)="abrirFormularioConsultaMedica()" class="btn btn-consulta-medica">Nueva Consulta Médica</button>
+            </div>
+          </div>
+
+          <div class="col-md-8 col-lg-8">
+              <div class="perfil-usuario-bio">
+                <div class="filters-header-historial">
+                  <h2 class="title">Historial de Eventos</h2>
+                </div>
+                <hr class="line">
+                <div class="filters-header">
+                  <h1 class="filters-title-filtro">Filtros</h1>
+                </div>
+                <hr class="line"> 
+                <div class="row ml-1 mr-2">
+                  <div class="form-group col-md-4">
+                    <label for="fechaDesde">Desde:</label>
+                    <input type="date" placeholder="Seleccione el rango de fecha" class="form-control"  id="fechaDesde" [(ngModel)]="fechaDesde">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="fechaHasta">Hasta:</label>
+                    <input type="date" placeholder="Seleccione el rango de fecha" class="form-control" id="fechaHasta" [(ngModel)]="fechaHasta">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="tipoEvento">Tipo de Evento:</label>
+                    <select id="tipoEvento" class="form-control" [(ngModel)]="tipoEvento">
+                      <option value="">Todos</option>
+                      <option value="Vacunación">Vacunación</option>
+                      <option value="Desparasitación">Desparasitación</option>
+                      <option value="Consulta Médica">Consulta Médica</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <button (click)="aplicarFiltro()" class="btn btn-filtro mt-3">Aplicar Filtro</button>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <button (click)="limpiarFiltro()" class="btn btn-secondary mt-3">Limpiar Filtro</button>
+                  </div>
+                  
+                  
+                </div>
+                <div id="container-timeline-paciente" class="col-md-12">
+                  <div id="cuerpo-timeline-paciente">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="timeline">
+                        
+                        <article class="timeline-item">
+                          <div class="timeline-desk" *ngFor="let evento of eventos; let i = index" [ngClass]="{ 'left': i % 2 === 0, 'right': i % 2 !== 0 }">
+                            <div class="panel"  [ngClass]="{ 'left': i % 2 === 0, 'right': i % 2 !== 0 }">
+                              <div class="timeline-box" >
+                                <br>
+                                <span class="arrow" [ngClass]="{ 'left': i % 2 === 0, 'right': i % 2 !== 0 }"></span>
+                                <span class="timeline-icon bg-custom">
+                                  <i class=" fa-solid fa-circle-dot"></i>
+                                </span>
+                                <h3>{{ evento.tipo }}
+                                  <i class="fa-solid fa-eye" (click)="verEvento(evento.id)"></i></h3>
+                                <span class="timeline-date">{{ evento.fecha | date:'fullDate' }} - {{ evento.fecha | date:'shortTime' }}</span>
+                                <p>{{ evento.detalles }}</p>
+                                <p><strong>Veterinario:</strong> {{ evento.veterinario }}</p>
+                                <!-- <div *ngIf="evento.tipo === 'Consulta Médica'">
+                                  <button (click)="verConsultaMedica(evento.id)" class="btn btn-primary mt-2">Ver</button>
+                                </div>
+                                <div *ngIf="evento.tipo === 'Vacunación'">
+                                  <button (click)="verVacunacion(evento.id)" class="btn btn-primary mt-2">Ver</button>
+                                </div>  -->
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+          </div> 
+        </div>
+        </div>
+      </div>
+    </div>
+  

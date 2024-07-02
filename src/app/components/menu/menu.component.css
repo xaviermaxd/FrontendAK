@@ -1,0 +1,125 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 240px; /* Ancho inicial del menú */
+    min-width: 80px; /* Ancho mínimo del menú */
+    padding: 10px 6px 0px 6px;
+    /* background: #02b1d0; */
+    background: #02a9c6;
+    z-index: 1000; /* Valor alto de z-index */
+}
+  
+  .sidebar .logo-details {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 20px;
+    justify-content: center; /* Centra la imagen horizontalmente */
+}
+
+.sidebar .logo-details img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* Ajusta la imagen dentro del contenedor sin distorsión */
+}
+
+hr {
+    border: none;
+    border-top:  3px dotted white; /* Línea punteada y color blanco */
+    margin: 5px 0; /* Espacio alrededor del hr */
+}
+
+.icon-container {
+  display: flex;        /* Usamos flexbox para alinear los íconos en una línea */
+  justify-content: space-between;  /* Espacio uniforme entre los íconos */
+  align-items: center;  /* Alinea los íconos verticalmente en el centro */
+  margin-right: 5px;
+}
+
+.icon-container i {
+  color: white;  
+  font-size: 18px;     /* Color blanco para los íconos */
+  margin:0 25px ;  
+  margin-top: 25px; 
+  margin-bottom: 15px;    /* Márgenes entre los íconos */
+}
+
+  .sidebar .nav-links {
+	height: 100%;
+	padding: 5px 5px 0 0;
+	overflow: auto;
+  }
+  
+  .sidebar .nav-links::-webkit-scrollbar {
+	display: none;
+  }
+  
+  .sidebar .nav-links li {
+	position: relative;
+	list-style: none;
+	margin-bottom: 5px;
+	transition: all 0.4s ease;
+	
+  }
+  
+  .sidebar .nav-links li:hover {
+	background: #a2e3f3bb;
+	border-radius: 10px;
+  }
+  
+  .sidebar .nav-links li i {
+	height: 50px;
+	min-width: 55px;
+	text-align: center;
+	line-height: 50px;
+	color: #fff;
+	font-size: 18px;
+	transition: all 0.3s ease;
+  }
+  
+  .sidebar .nav-links li.showMenu i.arrow {
+	transform: rotate(-180deg);
+  }
+  
+  .sidebar .nav-links li a {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+  }
+  
+  .sidebar .nav-links li a .link_name {
+	font-size: 17px;
+	font-weight: 400;
+	color: #fff;
+  }
+
+
+/* Media query para versión responsiva */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 80px; /* Ancho reducido del menú */
+    }
+
+    .sidebar .nav-links li a .link_name {
+        display: none; /* Oculta el texto */
+    }
+
+    .sidebar .nav-links li a i {
+        font-size: 20px; /* Tamaño de los iconos */
+    }
+}
+  
+
+  
+  
+  
+
+
+
+
+
+

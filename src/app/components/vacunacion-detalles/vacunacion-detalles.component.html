@@ -1,0 +1,33 @@
+<div class="container dialog-container">
+  <hr class="line">
+  <h1 class="title">Detalles de Vacunación</h1>
+  <hr class="line">
+  <div class="details" *ngIf="vacunacion">
+      <p><strong>Mascota:</strong> {{ vacunacion.Mascota?.Nombre }}</p>
+      <p><strong>Veterinario:</strong> {{ vacunacion.Veterinario?.Nombre }} {{ vacunacion.Veterinario?.ApellidoPaterno }} {{ vacunacion.Veterinario?.ApellidoMaterno }}</p>
+      <p><strong>Fecha de Vacunación:</strong> {{ vacunacion.fecha_aplicacion| date:'fullDate' }}</p>
+      <div class="table-rep-plugin">
+        <div class="medication" data-pattern="priority-columns">
+          <table class="table-bordered table table-sm">
+            <tbody>
+              <tr>
+                <th colspan="3" scope="row" class="title-medi">Medicamentos</th>
+              </tr>
+              <tr>
+                <th >Nombre</th>
+                <th >Dosis</th>
+                <th>Lote</th>
+              </tr>
+              <tr  *ngFor="let medicamento of medicamentos; let i = index">
+                <td>{{ medicamento.Medicamento?.nombre }}</td>
+                <td >{{ medicamento.dosis }}</td>
+                <td>{{ medicamento.lote }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</div>
+
+  

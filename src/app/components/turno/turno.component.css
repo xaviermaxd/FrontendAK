@@ -1,0 +1,248 @@
+/* Estilos generales */
+.container-fluid {
+    height: 100vh;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background: #e2f1fd;
+  }
+  
+  .container-fluid::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .card {
+    margin-bottom: 0;
+    padding: 8px;
+    box-shadow: 0 1px 15px -1px rgba(0, 0, 0, 0.37);
+  }
+  
+  .filters-card {
+    padding: 20px;
+  }
+  
+  .filters-header {
+    background-color: #04a1bd;
+    color: white;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+  }
+  
+  .filters-title {
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  .filters-body .input-group {
+    margin-bottom: 15px;
+  }
+  
+  .filters-body .input-group .form-control {
+    flex: 1;
+  }
+  
+  .table-card {
+    padding: 20px;
+  }
+  
+  .content {
+    padding: 10px;
+  }
+  
+  .content-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .btn-small {
+    padding: 5px 10px;
+    font-size: 1rem;
+  }
+  
+  .btn-medium {
+    padding: 8px 16px;
+    font-size: 1rem;
+    white-space: nowrap;
+  }
+  
+  .custom-input-group .btn {
+    flex: none;
+    margin-left: 10px;
+  }
+  
+  .filters-body .row {
+    margin-bottom: 10px;
+  }
+  
+  .filters-body .row:first-of-type {
+    margin-top: 10px;
+  }
+  
+  .filters-body .row + .row {
+    margin-top: 10px;
+  }
+  
+  .filters-body .row .col-md-3,
+  .filters-body .row .col-md-4,
+  .filters-body .row .col-md-12 {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  
+  .filters-body .row .col-md-3:last-child,
+  .filters-body .row .col-md-4:last-child,
+  .filters-body .row .col-md-12:last-child {
+    padding-right: 10px;
+  }
+  
+  .filters-body .row .btn {
+    width: 100%;
+  }
+  
+  .filters-body .form-control,
+  .filters-body .btn {
+    height: 45px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .btn-primary,
+  .table-hover thead tr {
+    background-color: #04a1bd;
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+/* Ajustar margen a la columna del menú */
+.menu-column {
+  padding-right: 0;
+  width: 250px; /* Ancho del menú */
+  
+}
+
+
+.content-column {
+  padding-left: 0; /* Eliminar cualquier relleno en el lado izquierdo */
+}
+
+/* Ajustar el ancho del contenido para ocupar el espacio restante */
+@media (min-width: 992px) {
+  .content-column {
+    width: calc(100% - 250px); /* Restar el ancho del menú al 100% */
+  }
+}
+  
+  body {
+    overflow: hidden;
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  body::before::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .calendario {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    gap: 10px;
+  }
+  
+  .day-column {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 14%;
+    box-sizing: border-box;
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .day-column:hover {
+    background-color: #e6f7ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .day-column h4 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .turno {
+    border: 1px solid #ccc;
+    margin: 5px 0;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #fafafa;
+  }
+  
+  .turno:hover {
+    background-color: #d0e8f2;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .turno-hora {
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .turnos-title{
+    font-size: 33px; /* Tamaño de fuente del título */
+ /* Negrita para el título */
+  color: #02a9c6; /* Color del texto */
+  margin: 0; /* Elimina márgenes predeterminados */
+  }
+  
+  .btn-height-adjusted {
+    height: 75%;
+    padding: 6px 12px;
+    font-size: 1.1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .align-items-center {
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    .menu-column {
+        width: 80px; /* Ancho reducido del menú */
+    }
+  
+    .content-column {
+        margin-left: 80px; /* Ancho del menú reducido */
+        margin-right: 0; /* Elimina el espacio adicional a la derecha del contenido */
+        width: calc(100% - 80px); /* Ajusta el ancho del contenido */
+    }
+}
+
+  
+  
